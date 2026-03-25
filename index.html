@@ -1,0 +1,1620 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 1 | De LLMs a Agentes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="ambient"></div>
+    <div class="deck-app">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">curso ia para programadores · clase 1</p>
+          <h1>De LLMs a Agentes</h1>
+        </div>
+        <div class="status">
+          <span id="mode-badge" class="mode-badge">NORMAL</span>
+          <span id="counter">01 / 40</span>
+          <span class="hint">&larr; &rarr; navegar · F focus</span>
+        </div>
+      </header>
+
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-fill" id="progress"></div>
+      </div>
+
+      <div class="stage-layout">
+        <nav class="rail" aria-label="Modulos">
+          <div class="rail-module" data-module="0">
+            <button class="rail-title" data-first="0">1. Apertura</button>
+            <div class="rail-dots" id="dots-0"></div>
+          </div>
+          <div class="rail-module" data-module="1">
+            <button class="rail-title" data-first="3">2. Repaso LLM</button>
+            <div class="rail-dots" id="dots-1"></div>
+          </div>
+          <div class="rail-module" data-module="2">
+            <button class="rail-title" data-first="5">3. Prompting</button>
+            <div class="rail-dots" id="dots-2"></div>
+          </div>
+          <div class="rail-module" data-module="3">
+            <button class="rail-title" data-first="13">4. RAG</button>
+            <div class="rail-dots" id="dots-3"></div>
+          </div>
+          <div class="rail-module" data-module="4">
+            <button class="rail-title" data-first="18">5. Agentes</button>
+            <div class="rail-dots" id="dots-4"></div>
+          </div>
+          <div class="rail-module" data-module="5">
+            <button class="rail-title" data-first="27">6. Stack Moderno</button>
+            <div class="rail-dots" id="dots-5"></div>
+          </div>
+          <div class="rail-module" data-module="6">
+            <button class="rail-title" data-first="35">7. Cierre</button>
+            <div class="rail-dots" id="dots-6"></div>
+          </div>
+        </nav>
+
+        <main class="viewport" id="viewport">
+
+          <!-- ═══ MODULO 0: APERTURA (slides 0-2) ═══ -->
+
+          <article class="slide is-active" data-index="0" data-module="0" data-tone="blue">
+            <div class="slide-content">
+              <p class="slide-kicker">01 · Apertura</p>
+              <h2>De LLMs a Agentes: Entiende, Construye y Automatiza con IA</h2>
+              <p>Clase 1 — Curso de Inteligencia Artificial para Programadores. Del prompt al producto: hoy recorremos el camino completo desde entender como funciona un LLM hasta convertirlo en un agente autonomo que trabaja para vos.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Red neuronal abstracta">
+                <defs>
+                  <filter id="s0-glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="8" result="b"/><feFlood flood-color="#7fb4ca" flood-opacity="0.3"/><feComposite in2="b" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+                <circle cx="260" cy="180" r="50" fill="none" stroke="#7fb4ca" stroke-width="1.5" filter="url(#s0-glow)" opacity="0.6"/>
+                <circle cx="260" cy="180" r="90" fill="none" stroke="#a3b5d6" stroke-width="0.8" stroke-dasharray="6 4" opacity="0.4"/>
+                <circle cx="260" cy="180" r="130" fill="none" stroke="#313342" stroke-width="0.6" stroke-dasharray="4 6" opacity="0.3"/>
+                <circle cx="260" cy="180" r="8" fill="#7fb4ca" opacity="0.9"/>
+                <circle cx="310" cy="140" r="5" fill="#b7cc85" opacity="0.7"/><line x1="265" y1="175" x2="305" y2="143" stroke="#b7cc85" stroke-width="0.6" opacity="0.4"/>
+                <circle cx="200" cy="150" r="5" fill="#dfbd76" opacity="0.7"/><line x1="255" y1="175" x2="205" y2="153" stroke="#dfbd76" stroke-width="0.6" opacity="0.4"/>
+                <circle cx="320" cy="210" r="5" fill="#cb7c94" opacity="0.7"/><line x1="268" y1="185" x2="315" y2="207" stroke="#cb7c94" stroke-width="0.6" opacity="0.4"/>
+                <circle cx="210" cy="230" r="5" fill="#ff8dd7" opacity="0.7"/><line x1="255" y1="188" x2="215" y2="227" stroke="#ff8dd7" stroke-width="0.6" opacity="0.4"/>
+                <circle cx="340" cy="170" r="4" fill="#7aa89f" opacity="0.6"/><line x1="268" y1="178" x2="336" y2="171" stroke="#7aa89f" stroke-width="0.5" opacity="0.3"/>
+                <circle cx="180" cy="190" r="4" fill="#deba87" opacity="0.6"/><line x1="252" y1="182" x2="184" y2="189" stroke="#deba87" stroke-width="0.5" opacity="0.3"/>
+                <circle cx="280" cy="110" r="3" fill="#a3b5d6" opacity="0.5"/><line x1="262" y1="172" x2="278" y2="113" stroke="#a3b5d6" stroke-width="0.4" opacity="0.3"/>
+                <circle cx="240" cy="260" r="3" fill="#7fb4ca" opacity="0.5"/><line x1="258" y1="188" x2="242" y2="257" stroke="#7fb4ca" stroke-width="0.4" opacity="0.3"/>
+                <text x="260" y="310" text-anchor="middle" font-size="11" fill="#8394A3" font-family="Space Grotesk,sans-serif">CLASE 1 — IA PARA PROGRAMADORES</text>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="1" data-module="0" data-tone="blue">
+            <div class="slide-content">
+              <p class="slide-kicker">02 · Apertura</p>
+              <h2>La gran pregunta</h2>
+              <p>Si un LLM no piensa, no razona y no entiende... ¿como es posible que pueda escribir codigo funcional? ¿Como diagnostica errores? ¿Como genera soluciones que a veces son mejores que las nuestras? Esa tension entre lo que el modelo NO es y lo que PARECE ser es exactamente lo que vamos a explorar hoy.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Signo de pregunta con nodos">
+                <text x="260" y="200" text-anchor="middle" font-size="140" font-weight="700" fill="none" stroke="#7fb4ca" stroke-width="1.5" opacity="0.25" font-family="Source Serif 4,serif">?</text>
+                <text x="260" y="200" text-anchor="middle" font-size="140" font-weight="700" fill="none" stroke="#7fb4ca" stroke-width="0.5" opacity="0.6" font-family="Source Serif 4,serif">?</text>
+                <circle cx="180" cy="120" r="18" fill="none" stroke="#b7cc85" stroke-width="1" opacity="0.5"/><text x="180" y="124" text-anchor="middle" font-size="8" fill="#b7cc85" font-family="Space Grotesk,sans-serif">NO PIENSA</text>
+                <circle cx="370" cy="100" r="18" fill="none" stroke="#cb7c94" stroke-width="1" opacity="0.5"/><text x="370" y="104" text-anchor="middle" font-size="8" fill="#cb7c94" font-family="Space Grotesk,sans-serif">NO RAZONA</text>
+                <circle cx="380" cy="260" r="18" fill="none" stroke="#dfbd76" stroke-width="1" opacity="0.5"/><text x="380" y="264" text-anchor="middle" font-size="8" fill="#dfbd76" font-family="Space Grotesk,sans-serif">NO ENTIENDE</text>
+                <circle cx="160" cy="270" r="18" fill="none" stroke="#ff8dd7" stroke-width="1" opacity="0.5"/><text x="160" y="274" text-anchor="middle" font-size="7" fill="#ff8dd7" font-family="Space Grotesk,sans-serif">PERO CREA</text>
+                <text x="260" y="330" text-anchor="middle" font-size="10" fill="#8394A3" font-family="Space Grotesk,sans-serif">¿COMO ES POSIBLE?</text>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="2" data-module="0" data-tone="blue">
+            <div class="slide-content">
+              <p class="slide-kicker">03 · Apertura</p>
+              <h2>Mapa de la clase</h2>
+              <p>Hoy recorremos 5 bloques: un repaso rapido de LLMs, prompting profesional, RAG para darle memoria externa, el salto de chatbot a agente, y el stack moderno de herramientas. Cada bloque construye sobre el anterior.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa de 5 bloques de la clase">
+                <g font-family="Space Grotesk,sans-serif">
+                  <rect x="20" y="155" width="80" height="50" rx="8" fill="#1c212c" stroke="#dfbd76" stroke-width="1.2"/>
+                  <text x="60" y="176" text-anchor="middle" font-size="9" font-weight="600" fill="#dfbd76">REPASO</text>
+                  <text x="60" y="192" text-anchor="middle" font-size="7" fill="#8394A3">LLM</text>
+
+                  <line x1="100" y1="180" x2="120" y2="180" stroke="#313342" stroke-width="1.2" stroke-dasharray="4 3"/>
+                  <polygon points="118,176 126,180 118,184" fill="#313342"/>
+
+                  <rect x="126" y="155" width="80" height="50" rx="8" fill="#1c212c" stroke="#b7cc85" stroke-width="1.2"/>
+                  <text x="166" y="176" text-anchor="middle" font-size="9" font-weight="600" fill="#b7cc85">PROMPTING</text>
+                  <text x="166" y="192" text-anchor="middle" font-size="7" fill="#8394A3">Profesional</text>
+
+                  <line x1="206" y1="180" x2="226" y2="180" stroke="#313342" stroke-width="1.2" stroke-dasharray="4 3"/>
+                  <polygon points="224,176 232,180 224,184" fill="#313342"/>
+
+                  <rect x="232" y="155" width="80" height="50" rx="8" fill="#1c212c" stroke="#a3b5d6" stroke-width="1.2"/>
+                  <text x="272" y="176" text-anchor="middle" font-size="9" font-weight="600" fill="#a3b5d6">RAG</text>
+                  <text x="272" y="192" text-anchor="middle" font-size="7" fill="#8394A3">Memoria externa</text>
+
+                  <line x1="312" y1="180" x2="332" y2="180" stroke="#313342" stroke-width="1.2" stroke-dasharray="4 3"/>
+                  <polygon points="330,176 338,180 330,184" fill="#313342"/>
+
+                  <rect x="338" y="155" width="80" height="50" rx="8" fill="#1c212c" stroke="#cb7c94" stroke-width="1.2"/>
+                  <text x="378" y="176" text-anchor="middle" font-size="9" font-weight="600" fill="#cb7c94">AGENTES</text>
+                  <text x="378" y="192" text-anchor="middle" font-size="7" fill="#8394A3">LLM + Tools</text>
+
+                  <line x1="418" y1="180" x2="438" y2="180" stroke="#313342" stroke-width="1.2" stroke-dasharray="4 3"/>
+                  <polygon points="436,176 444,180 436,184" fill="#313342"/>
+
+                  <rect x="440" y="155" width="65" height="50" rx="8" fill="#1c212c" stroke="#deba87" stroke-width="1.2"/>
+                  <text x="472" y="176" text-anchor="middle" font-size="9" font-weight="600" fill="#deba87">STACK</text>
+                  <text x="472" y="192" text-anchor="middle" font-size="7" fill="#8394A3">Moderno</text>
+
+                  <text x="260" y="130" text-anchor="middle" font-size="11" letter-spacing="2" fill="#8394A3">RECORRIDO DE HOY</text>
+                  <text x="260" y="250" text-anchor="middle" font-size="9" fill="#313342">90 minutos · 5 bloques · 3 demos en vivo</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <!-- ═══ MODULO 1: REPASO EXPRESS LLM (slides 3-4) ═══ -->
+
+          <article class="slide" data-index="3" data-module="1" data-tone="yellow">
+            <div class="slide-content">
+              <p class="slide-kicker">04 · Repaso LLM</p>
+              <h2>Lo que ya sabemos</h2>
+              <p>Texto entra, se parte en tokens, se transforma en numeros, pasa por capas de atencion, y al final el modelo genera una probabilidad para cada posible siguiente token. Eso es TODO lo que hace. Tres ideas clave: parametros = conocimiento congelado, ventana de contexto = memoria RAM, alucinaciones = no tiene "no se".</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="D1: Flujo interno de un LLM">
+                <defs>
+                  <filter id="s3-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="b"/><feFlood flood-color="#dfbd76" flood-opacity="0.25"/><feComposite in2="b" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="30" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">FLUJO INTERNO DE UN LLM</text>
+
+                  <rect x="15" y="80" width="70" height="40" rx="6" fill="#1c212c" stroke="#dfbd76" stroke-width="1"/>
+                  <text x="50" y="104" text-anchor="middle" font-size="9" fill="#dfbd76">Texto</text>
+
+                  <line x1="85" y1="100" x2="105" y2="100" stroke="#dfbd76" stroke-width="0.8" stroke-dasharray="3 3"/>
+                  <polygon points="103,96 111,100 103,104" fill="#dfbd76" opacity="0.6"/>
+
+                  <rect x="111" y="80" width="70" height="40" rx="6" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="146" y="104" text-anchor="middle" font-size="9" fill="#b7cc85">Tokens</text>
+
+                  <line x1="181" y1="100" x2="201" y2="100" stroke="#b7cc85" stroke-width="0.8" stroke-dasharray="3 3"/>
+                  <polygon points="199,96 207,100 199,104" fill="#b7cc85" opacity="0.6"/>
+
+                  <rect x="207" y="80" width="80" height="40" rx="6" fill="#1c212c" stroke="#a3b5d6" stroke-width="1"/>
+                  <text x="247" y="104" text-anchor="middle" font-size="9" fill="#a3b5d6">Embeddings</text>
+
+                  <line x1="287" y1="100" x2="307" y2="100" stroke="#a3b5d6" stroke-width="0.8" stroke-dasharray="3 3"/>
+                  <polygon points="305,96 313,100 305,104" fill="#a3b5d6" opacity="0.6"/>
+
+                  <rect x="313" y="80" width="80" height="40" rx="6" fill="#1c212c" stroke="#7fb4ca" stroke-width="1" filter="url(#s3-glow)"/>
+                  <text x="353" y="98" text-anchor="middle" font-size="8" fill="#7fb4ca">Transformer</text>
+                  <text x="353" y="110" text-anchor="middle" font-size="7" fill="#8394A3">Atencion</text>
+
+                  <line x1="393" y1="100" x2="413" y2="100" stroke="#7fb4ca" stroke-width="0.8" stroke-dasharray="3 3"/>
+                  <polygon points="411,96 419,100 411,104" fill="#7fb4ca" opacity="0.6"/>
+
+                  <rect x="419" y="80" width="85" height="40" rx="6" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="461" y="98" text-anchor="middle" font-size="8" fill="#cb7c94">Probabilidad</text>
+                  <text x="461" y="110" text-anchor="middle" font-size="7" fill="#8394A3">Next token</text>
+
+                  <!-- 3 conceptos clave -->
+                  <rect x="30" y="180" width="140" height="70" rx="8" fill="#1c212c" stroke="#dfbd76" stroke-width="0.8"/>
+                  <text x="100" y="202" text-anchor="middle" font-size="9" font-weight="600" fill="#dfbd76">Parametros</text>
+                  <text x="100" y="218" text-anchor="middle" font-size="8" fill="#8394A3">Conocimiento congelado</text>
+                  <text x="100" y="232" text-anchor="middle" font-size="7" fill="#313342">GPT-4: 1.8T params</text>
+
+                  <rect x="190" y="180" width="140" height="70" rx="8" fill="#1c212c" stroke="#7fb4ca" stroke-width="0.8"/>
+                  <text x="260" y="202" text-anchor="middle" font-size="9" font-weight="600" fill="#7fb4ca">Ventana de Contexto</text>
+                  <text x="260" y="218" text-anchor="middle" font-size="8" fill="#8394A3">Memoria RAM temporal</text>
+                  <text x="260" y="232" text-anchor="middle" font-size="7" fill="#313342">Lo que no entra, no existe</text>
+
+                  <rect x="350" y="180" width="140" height="70" rx="8" fill="#1c212c" stroke="#cb7c94" stroke-width="0.8"/>
+                  <text x="420" y="202" text-anchor="middle" font-size="9" font-weight="600" fill="#cb7c94">Alucinaciones</text>
+                  <text x="420" y="218" text-anchor="middle" font-size="8" fill="#8394A3">Siempre genera texto</text>
+                  <text x="420" y="232" text-anchor="middle" font-size="7" fill="#313342">No tiene "no se"</text>
+
+                  <text x="260" y="290" text-anchor="middle" font-size="9" fill="#313342">No hay magia. Solo matematicas a escala.</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="4" data-module="1" data-tone="yellow">
+            <div class="slide-content">
+              <p class="slide-kicker">05 · Repaso LLM</p>
+              <h2>Lo que falta</h2>
+              <p>Saber que ES un LLM no es lo mismo que saber USARLO profesionalmente. Hoy vamos a cerrar esa brecha con tres preguntas: ¿como le hablo al modelo? ¿como le doy informacion que no tiene? ¿como lo convierto en un agente autonomo?</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tres preguntas clave">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="40" text-anchor="middle" font-size="11" letter-spacing="2" fill="#8394A3">TRES PREGUNTAS</text>
+                  <rect x="60" y="70" width="400" height="60" rx="10" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="80" y="96" font-size="14" fill="#b7cc85" font-weight="700">01</text>
+                  <text x="115" y="96" font-size="11" fill="#A1AABB">¿Como le HABLO al modelo?</text>
+                  <text x="115" y="116" font-size="8" fill="#8394A3">Prompting profesional</text>
+
+                  <rect x="60" y="145" width="400" height="60" rx="10" fill="#1c212c" stroke="#a3b5d6" stroke-width="1"/>
+                  <text x="80" y="171" font-size="14" fill="#a3b5d6" font-weight="700">02</text>
+                  <text x="115" y="171" font-size="11" fill="#A1AABB">¿Como le doy INFO que no tiene?</text>
+                  <text x="115" y="191" font-size="8" fill="#8394A3">RAG — Retrieval Augmented Generation</text>
+
+                  <rect x="60" y="220" width="400" height="60" rx="10" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="80" y="246" font-size="14" fill="#cb7c94" font-weight="700">03</text>
+                  <text x="115" y="246" font-size="11" fill="#A1AABB">¿Como lo convierto en AGENTE?</text>
+                  <text x="115" y="266" font-size="8" fill="#8394A3">LLM + Herramientas + Memoria + Planificacion</text>
+
+                  <text x="260" y="320" text-anchor="middle" font-size="9" fill="#dfbd76">Hoy cerramos la brecha entre saber y usar.</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <!-- ═══ MODULO 2: PROMPTING PROFESIONAL (slides 5-12) ═══ -->
+
+          <article class="slide" data-index="5" data-module="2" data-tone="green">
+            <div class="slide-content">
+              <p class="slide-kicker">06 · Prompting</p>
+              <h2>El prompt es codigo</h2>
+              <p>Un prompt NO es una pregunta. Es una instruccion estructurada que define el comportamiento del modelo. Analogia: un prompt es como los parametros de una funcion. Si tu funcion recibe basura, devuelve basura. Con un prompt es exactamente igual.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Prompt como codigo">
+                <g font-family="Space Grotesk,sans-serif">
+                  <rect x="40" y="30" width="440" height="280" rx="12" fill="#0d1117" stroke="#313342" stroke-width="1"/>
+                  <circle cx="64" cy="50" r="5" fill="#cb7c94" opacity="0.8"/><circle cx="80" cy="50" r="5" fill="#dfbd76" opacity="0.8"/><circle cx="96" cy="50" r="5" fill="#b7cc85" opacity="0.8"/>
+                  <line x1="40" y1="65" x2="480" y2="65" stroke="#313342" stroke-width="0.5"/>
+                  <text x="60" y="90" font-size="10" fill="#8394A3">// Prompt como funcion tipada</text>
+                  <text x="60" y="112" font-size="10" fill="#cb7c94">function</text><text x="115" y="112" font-size="10" fill="#b7cc85"> prompt</text><text x="165" y="112" font-size="10" fill="#A1AABB">(</text>
+                  <text x="70" y="132" font-size="10" fill="#dfbd76">  rol</text><text x="100" y="132" font-size="10" fill="#A1AABB">: string,</text>
+                  <text x="70" y="152" font-size="10" fill="#dfbd76">  contexto</text><text x="140" y="152" font-size="10" fill="#A1AABB">: string,</text>
+                  <text x="70" y="172" font-size="10" fill="#dfbd76">  instruccion</text><text x="160" y="172" font-size="10" fill="#A1AABB">: string,</text>
+                  <text x="70" y="192" font-size="10" fill="#dfbd76">  formato</text><text x="130" y="192" font-size="10" fill="#A1AABB">: OutputType,</text>
+                  <text x="70" y="212" font-size="10" fill="#dfbd76">  ejemplos</text><text x="140" y="212" font-size="10" fill="#A1AABB">?: Example[]</text>
+                  <text x="60" y="232" font-size="10" fill="#A1AABB">): Response</text>
+                  <text x="60" y="262" font-size="10" fill="#8394A3">// Prompt vago = undefined behavior</text>
+                  <text x="60" y="280" font-size="10" fill="#8394A3">// Prompt preciso = respuesta predecible</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="6" data-module="2" data-tone="green">
+            <div class="slide-content">
+              <p class="slide-kicker">07 · Prompting</p>
+              <h2>Anatomia de un prompt profesional</h2>
+              <p>Un prompt profesional tiene 5 capas, como una funcion con parametros tipados: System Prompt (quien es), Contexto (que necesita saber), Instruccion (que hacer), Formato (como responder), y Ejemplos (few-shot learning).</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="D2: Stack de 5 capas del prompt">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">ANATOMIA DEL PROMPT</text>
+
+                  <rect x="80" y="45" width="360" height="48" rx="8" fill="#1c212c" stroke="#7fb4ca" stroke-width="1.2"/>
+                  <text x="100" y="68" font-size="8" fill="#7fb4ca" font-weight="700">CAPA 5</text>
+                  <text x="160" y="68" font-size="10" fill="#A1AABB">Ejemplos / Few-shot</text>
+                  <text x="160" y="82" font-size="7" fill="#8394A3">Le muestras el formato de respuesta esperado</text>
+
+                  <rect x="80" y="100" width="360" height="48" rx="8" fill="#1c212c" stroke="#dfbd76" stroke-width="1.2"/>
+                  <text x="100" y="123" font-size="8" fill="#dfbd76" font-weight="700">CAPA 4</text>
+                  <text x="160" y="123" font-size="10" fill="#A1AABB">Formato de salida</text>
+                  <text x="160" y="137" font-size="7" fill="#8394A3">JSON, tabla, codigo, lista, markdown</text>
+
+                  <rect x="80" y="155" width="360" height="48" rx="8" fill="#1c212c" stroke="#b7cc85" stroke-width="1.2"/>
+                  <text x="100" y="178" font-size="8" fill="#b7cc85" font-weight="700">CAPA 3</text>
+                  <text x="160" y="178" font-size="10" fill="#A1AABB">Instruccion</text>
+                  <text x="160" y="192" font-size="7" fill="#8394A3">Que tiene que hacer — el metodo que llamas</text>
+
+                  <rect x="80" y="210" width="360" height="48" rx="8" fill="#1c212c" stroke="#a3b5d6" stroke-width="1.2"/>
+                  <text x="100" y="233" font-size="8" fill="#a3b5d6" font-weight="700">CAPA 2</text>
+                  <text x="160" y="233" font-size="10" fill="#A1AABB">Contexto</text>
+                  <text x="160" y="247" font-size="7" fill="#8394A3">Informacion que necesita para responder bien</text>
+
+                  <rect x="80" y="265" width="360" height="48" rx="8" fill="#1c212c" stroke="#cb7c94" stroke-width="1.2"/>
+                  <text x="100" y="288" font-size="8" fill="#cb7c94" font-weight="700">CAPA 1</text>
+                  <text x="160" y="288" font-size="10" fill="#A1AABB">System Prompt</text>
+                  <text x="160" y="302" font-size="7" fill="#8394A3">Personalidad, rol y reglas — el constructor de la clase</text>
+
+                  <text x="260" y="340" text-anchor="middle" font-size="8" fill="#313342">Cada capa es un parametro tipado de tu funcion</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="7" data-module="2" data-tone="green">
+            <div class="slide-content">
+              <p class="slide-kicker">08 · Prompting</p>
+              <h2>System Prompt en profundidad</h2>
+              <p>El system prompt es el ADN del agente. Define QUIEN es el modelo: su rol, su tono, sus restricciones y su formato de respuesta. Es como el constructor de una clase: se ejecuta una vez y configura todo el comportamiento posterior.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="System prompt ejemplo">
+                <g font-family="Space Grotesk,sans-serif">
+                  <rect x="30" y="20" width="460" height="310" rx="12" fill="#0d1117" stroke="#cb7c94" stroke-width="1"/>
+                  <circle cx="54" cy="40" r="5" fill="#cb7c94" opacity="0.8"/><circle cx="70" cy="40" r="5" fill="#dfbd76" opacity="0.8"/><circle cx="86" cy="40" r="5" fill="#b7cc85" opacity="0.8"/>
+                  <text x="200" y="43" font-size="8" fill="#8394A3">system-prompt.md</text>
+                  <line x1="30" y1="55" x2="490" y2="55" stroke="#313342" stroke-width="0.5"/>
+                  <text x="50" y="78" font-size="9" fill="#cb7c94" font-weight="600">## Rol</text>
+                  <text x="50" y="94" font-size="9" fill="#A1AABB">Sos un backend developer senior en Node.js</text>
+                  <text x="50" y="108" font-size="9" fill="#A1AABB">con experiencia en Express y TypeScript.</text>
+                  <text x="50" y="130" font-size="9" fill="#b7cc85" font-weight="600">## Restricciones</text>
+                  <text x="50" y="146" font-size="9" fill="#A1AABB">- Solo responde sobre backend</text>
+                  <text x="50" y="160" font-size="9" fill="#A1AABB">- Usa TypeScript siempre</text>
+                  <text x="50" y="174" font-size="9" fill="#A1AABB">- Incluye validacion con Zod</text>
+                  <text x="50" y="196" font-size="9" fill="#dfbd76" font-weight="600">## Tono</text>
+                  <text x="50" y="212" font-size="9" fill="#A1AABB">Directo y tecnico. Sin explicaciones</text>
+                  <text x="50" y="226" font-size="9" fill="#A1AABB">innecesarias. Codigo limpio y comentado.</text>
+                  <text x="50" y="248" font-size="9" fill="#a3b5d6" font-weight="600">## Formato</text>
+                  <text x="50" y="264" font-size="9" fill="#A1AABB">Responde SOLO con codigo.</text>
+                  <text x="50" y="278" font-size="9" fill="#A1AABB">Sin texto antes ni despues del bloque.</text>
+                  <text x="50" y="305" font-size="8" fill="#8394A3">// Invisible para el usuario final — configura TODO</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="8" data-module="2" data-tone="green">
+            <div class="slide-content">
+              <p class="slide-kicker">09 · Prompting</p>
+              <h2>Tecnicas de prompting</h2>
+              <p>Cuatro tecnicas que van a usar constantemente: Zero-shot (instruccion directa), Few-shot (con ejemplos), Chain of Thought (razonamiento paso a paso), y Role Playing (asignar identidad). Cada una tiene su momento.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tabla de tecnicas de prompting">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">TECNICAS DE PROMPTING</text>
+                  <!-- Headers -->
+                  <rect x="20" y="42" width="160" height="28" rx="4" fill="#232a36"/><text x="100" y="60" text-anchor="middle" font-size="9" fill="#dfbd76" font-weight="600">TECNICA</text>
+                  <rect x="180" y="42" width="180" height="28" rx="4" fill="#232a36"/><text x="270" y="60" text-anchor="middle" font-size="9" fill="#dfbd76" font-weight="600">QUE ES</text>
+                  <rect x="360" y="42" width="140" height="28" rx="4" fill="#232a36"/><text x="430" y="60" text-anchor="middle" font-size="9" fill="#dfbd76" font-weight="600">CUANDO USARLA</text>
+                  <!-- Row 1 -->
+                  <rect x="20" y="74" width="160" height="55" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="100" y="98" text-anchor="middle" font-size="10" fill="#b7cc85" font-weight="600">Zero-shot</text><text x="100" y="112" text-anchor="middle" font-size="7" fill="#8394A3">Solo instruccion</text>
+                  <rect x="180" y="74" width="180" height="55" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="270" y="98" text-anchor="middle" font-size="8" fill="#A1AABB">Instruccion directa</text><text x="270" y="112" text-anchor="middle" font-size="8" fill="#A1AABB">sin ejemplos previos</text>
+                  <rect x="360" y="74" width="140" height="55" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="430" y="100" text-anchor="middle" font-size="8" fill="#A1AABB">Tareas simples</text>
+                  <!-- Row 2 -->
+                  <rect x="20" y="133" width="160" height="55" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="100" y="157" text-anchor="middle" font-size="10" fill="#7fb4ca" font-weight="600">Few-shot</text><text x="100" y="171" text-anchor="middle" font-size="7" fill="#8394A3">Con 2-3 ejemplos</text>
+                  <rect x="180" y="133" width="180" height="55" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="270" y="157" text-anchor="middle" font-size="8" fill="#A1AABB">Incluye ejemplos del</text><text x="270" y="171" text-anchor="middle" font-size="8" fill="#A1AABB">formato esperado</text>
+                  <rect x="360" y="133" width="140" height="55" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="430" y="159" text-anchor="middle" font-size="8" fill="#A1AABB">Formato especifico</text>
+                  <!-- Row 3 -->
+                  <rect x="20" y="192" width="160" height="55" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="100" y="216" text-anchor="middle" font-size="10" fill="#a3b5d6" font-weight="600">Chain of Thought</text><text x="100" y="230" text-anchor="middle" font-size="7" fill="#8394A3">Paso a paso</text>
+                  <rect x="180" y="192" width="180" height="55" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="270" y="216" text-anchor="middle" font-size="8" fill="#A1AABB">Pide razonamiento</text><text x="270" y="230" text-anchor="middle" font-size="8" fill="#A1AABB">explicito antes de responder</text>
+                  <rect x="360" y="192" width="140" height="55" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="430" y="218" text-anchor="middle" font-size="8" fill="#A1AABB">Logica y mates</text>
+                  <!-- Row 4 -->
+                  <rect x="20" y="251" width="160" height="55" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="100" y="275" text-anchor="middle" font-size="10" fill="#cb7c94" font-weight="600">Role Playing</text><text x="100" y="289" text-anchor="middle" font-size="7" fill="#8394A3">Asignar identidad</text>
+                  <rect x="180" y="251" width="180" height="55" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="270" y="275" text-anchor="middle" font-size="8" fill="#A1AABB">Asigna un rol al modelo</text><text x="270" y="289" text-anchor="middle" font-size="8" fill="#A1AABB">"Sos un senior dev en Go"</text>
+                  <rect x="360" y="251" width="140" height="55" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="430" y="277" text-anchor="middle" font-size="8" fill="#A1AABB">Profundidad tecnica</text>
+
+                  <text x="260" y="335" text-anchor="middle" font-size="8" fill="#313342">Combinalas: Role + Few-shot + CoT = maximo control</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="9" data-module="2" data-tone="green">
+            <div class="slide-content">
+              <p class="slide-kicker">10 · Demo en vivo</p>
+              <h2>Prompt malo vs profesional</h2>
+              <p>Comparacion en vivo: a la izquierda un prompt vago ("hazme una API REST"), a la derecha un prompt profesional con system prompt, contexto, formato y restricciones. La diferencia en la salida es dramatica. El prompt es codigo — tratalo como tal.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="D3: Prompt malo vs profesional">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="24" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">DEMO EN VIVO</text>
+                  <!-- Left: Bad -->
+                  <rect x="15" y="40" width="235" height="140" rx="10" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="132" y="60" text-anchor="middle" font-size="9" fill="#cb7c94" font-weight="600">PROMPT MALO</text>
+                  <rect x="30" y="72" width="205" height="30" rx="6" fill="#0d1117"/>
+                  <text x="40" y="92" font-size="9" fill="#A1AABB">"Hazme una API REST"</text>
+                  <text x="30" y="120" font-size="8" fill="#8394A3">Resultado:</text>
+                  <text x="30" y="136" font-size="8" fill="#cb7c94">- Sin tipado</text>
+                  <text x="30" y="150" font-size="8" fill="#cb7c94">- Sin validacion</text>
+                  <text x="30" y="164" font-size="8" fill="#cb7c94">- Generico e impredecible</text>
+                  <!-- VS -->
+                  <text x="260" y="115" text-anchor="middle" font-size="16" font-weight="700" fill="#313342">VS</text>
+                  <!-- Right: Good -->
+                  <rect x="270" y="40" width="235" height="140" rx="10" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="387" y="60" text-anchor="middle" font-size="9" fill="#b7cc85" font-weight="600">PROMPT PROFESIONAL</text>
+                  <rect x="285" y="72" width="205" height="80" rx="6" fill="#0d1117"/>
+                  <text x="295" y="88" font-size="7" fill="#cb7c94">System:</text><text x="335" y="88" font-size="7" fill="#A1AABB"> Senior backend dev</text>
+                  <text x="295" y="100" font-size="7" fill="#a3b5d6">Contexto:</text><text x="345" y="100" font-size="7" fill="#A1AABB"> SaaS de tareas</text>
+                  <text x="295" y="112" font-size="7" fill="#b7cc85">Instruccion:</text><text x="355" y="112" font-size="7" fill="#A1AABB"> POST /tasks + Zod</text>
+                  <text x="295" y="124" font-size="7" fill="#dfbd76">Formato:</text><text x="340" y="124" font-size="7" fill="#A1AABB"> Solo codigo TS</text>
+                  <text x="295" y="136" font-size="7" fill="#7fb4ca">Ejemplo:</text><text x="340" y="136" font-size="7" fill="#A1AABB"> Schema reference</text>
+                  <text x="285" y="164" font-size="8" fill="#b7cc85">Resultado: preciso y tipado</text>
+                  <!-- Bottom comparison -->
+                  <rect x="60" y="200" width="400" height="50" rx="8" fill="#1c212c" stroke="#dfbd76" stroke-width="0.8"/>
+                  <text x="260" y="225" text-anchor="middle" font-size="10" fill="#dfbd76">Mismo modelo. Mismo momento. Distinto prompt.</text>
+                  <text x="260" y="240" text-anchor="middle" font-size="9" fill="#8394A3">La diferencia esta en VOS, no en la IA.</text>
+                  <text x="260" y="290" text-anchor="middle" font-size="9" fill="#313342">ver demos/01-prompting.md para instrucciones completas</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="10" data-module="2" data-tone="green">
+            <div class="slide-content">
+              <p class="slide-kicker">11 · Prompting</p>
+              <h2>Reglas en Markdown</h2>
+              <p>Cuando trabajas con agentes de codigo, las reglas del sistema no van en un chat. Van en archivos .rules.md que viven en el repositorio. Eso te permite versionar el comportamiento del agente con Git, como cualquier otra parte del codigo.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Estructura de .rules.md">
+                <g font-family="Space Grotesk,sans-serif">
+                  <rect x="40" y="20" width="440" height="310" rx="12" fill="#0d1117" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="60" y="45" font-size="9" fill="#8394A3">.rules.md — versionable con Git</text>
+                  <line x1="40" y1="55" x2="480" y2="55" stroke="#313342" stroke-width="0.5"/>
+                  <text x="60" y="78" font-size="10" fill="#b7cc85" font-weight="600"># Reglas del Agente</text>
+                  <text x="60" y="100" font-size="10" fill="#cb7c94">## Rol</text>
+                  <text x="60" y="116" font-size="9" fill="#A1AABB">Senior TypeScript developer, Express + PostgreSQL</text>
+                  <text x="60" y="142" font-size="10" fill="#cb7c94">## Restricciones</text>
+                  <text x="60" y="158" font-size="9" fill="#A1AABB">- Siempre usar TypeScript strict mode</text>
+                  <text x="60" y="174" font-size="9" fill="#A1AABB">- Validar inputs con Zod</text>
+                  <text x="60" y="190" font-size="9" fill="#A1AABB">- No usar any bajo ninguna circunstancia</text>
+                  <text x="60" y="216" font-size="10" fill="#cb7c94">## Formato de respuesta</text>
+                  <text x="60" y="232" font-size="9" fill="#A1AABB">- Solo codigo, sin explicaciones</text>
+                  <text x="60" y="248" font-size="9" fill="#A1AABB">- Incluir types/interfaces primero</text>
+                  <text x="60" y="274" font-size="10" fill="#cb7c94">## Convenciones del proyecto</text>
+                  <text x="60" y="290" font-size="9" fill="#A1AABB">- camelCase para variables, PascalCase para types</text>
+                  <text x="60" y="306" font-size="9" fill="#A1AABB">- Barrel exports en cada modulo</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="11" data-module="2" data-tone="green">
+            <div class="slide-content">
+              <p class="slide-kicker">12 · Prompting</p>
+              <h2>El prompt como contrato</h2>
+              <p>Si tu prompt es vago, la respuesta sera vaga. Si tu prompt es preciso, la respuesta es predecible. Regla de oro: trata cada prompt como una funcion con tipado estricto. Definí entradas, salidas y restricciones.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Prompt como contrato">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="30" text-anchor="middle" font-size="11" letter-spacing="2" fill="#8394A3">EL PROMPT ES UN CONTRATO</text>
+                  <rect x="40" y="50" width="200" height="120" rx="10" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="140" y="75" text-anchor="middle" font-size="10" fill="#cb7c94" font-weight="600">Prompt vago</text>
+                  <text x="60" y="100" font-size="9" fill="#A1AABB">"Haceme un componente"</text>
+                  <line x1="60" y1="115" x2="220" y2="115" stroke="#313342" stroke-width="0.5"/>
+                  <text x="60" y="135" font-size="9" fill="#8394A3">Resultado: impredecible</text>
+                  <text x="60" y="150" font-size="9" fill="#cb7c94">undefined behavior</text>
+
+                  <rect x="280" y="50" width="200" height="120" rx="10" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="380" y="75" text-anchor="middle" font-size="10" fill="#b7cc85" font-weight="600">Prompt preciso</text>
+                  <text x="300" y="100" font-size="9" fill="#A1AABB">"Crea un form en React..."</text>
+                  <line x1="300" y1="115" x2="460" y2="115" stroke="#313342" stroke-width="0.5"/>
+                  <text x="300" y="135" font-size="9" fill="#8394A3">Resultado: predecible</text>
+                  <text x="300" y="150" font-size="9" fill="#b7cc85">tipo seguro</text>
+
+                  <rect x="80" y="200" width="360" height="80" rx="10" fill="#1c212c" stroke="#dfbd76" stroke-width="1"/>
+                  <text x="260" y="228" text-anchor="middle" font-size="11" fill="#dfbd76" font-weight="600">Regla de oro</text>
+                  <text x="260" y="252" text-anchor="middle" font-size="10" fill="#A1AABB">Trata cada prompt como una funcion</text>
+                  <text x="260" y="268" text-anchor="middle" font-size="10" fill="#A1AABB">con tipado estricto</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="12" data-module="2" data-tone="green">
+            <div class="slide-content">
+              <p class="slide-kicker">13 · Prompting</p>
+              <h2>Errores comunes en prompting</h2>
+              <p>Los 5 errores que mas veo: no definir el rol, pedir todo en un solo mensaje, no especificar formato de salida, no iterar sobre el resultado, e ignorar el system prompt. Evitalos y tus resultados mejoran inmediatamente.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="5 errores comunes en prompting">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="30" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">ERRORES COMUNES</text>
+
+                  <rect x="40" y="48" width="440" height="48" rx="8" fill="#1c212c" stroke="#cb7c94" stroke-width="0.8"/>
+                  <circle cx="70" cy="72" r="10" fill="none" stroke="#cb7c94" stroke-width="1.2"/><line x1="63" y1="65" x2="77" y2="79" stroke="#cb7c94" stroke-width="1.5"/><line x1="77" y1="65" x2="63" y2="79" stroke="#cb7c94" stroke-width="1.5"/>
+                  <text x="92" y="70" font-size="10" fill="#A1AABB" font-weight="500">No definir el rol</text>
+                  <text x="92" y="84" font-size="8" fill="#8394A3">El modelo no sabe desde que perspectiva responder</text>
+
+                  <rect x="40" y="104" width="440" height="48" rx="8" fill="#1c212c" stroke="#cb7c94" stroke-width="0.8"/>
+                  <circle cx="70" cy="128" r="10" fill="none" stroke="#cb7c94" stroke-width="1.2"/><line x1="63" y1="121" x2="77" y2="135" stroke="#cb7c94" stroke-width="1.5"/><line x1="77" y1="121" x2="63" y2="135" stroke="#cb7c94" stroke-width="1.5"/>
+                  <text x="92" y="126" font-size="10" fill="#A1AABB" font-weight="500">Pedir todo en un solo mensaje</text>
+                  <text x="92" y="140" font-size="8" fill="#8394A3">Divide tareas complejas en pasos discretos</text>
+
+                  <rect x="40" y="160" width="440" height="48" rx="8" fill="#1c212c" stroke="#cb7c94" stroke-width="0.8"/>
+                  <circle cx="70" cy="184" r="10" fill="none" stroke="#cb7c94" stroke-width="1.2"/><line x1="63" y1="177" x2="77" y2="191" stroke="#cb7c94" stroke-width="1.5"/><line x1="77" y1="177" x2="63" y2="191" stroke="#cb7c94" stroke-width="1.5"/>
+                  <text x="92" y="182" font-size="10" fill="#A1AABB" font-weight="500">No especificar formato de salida</text>
+                  <text x="92" y="196" font-size="8" fill="#8394A3">¿JSON? ¿Tabla? ¿Codigo? ¿Lista? Definilo</text>
+
+                  <rect x="40" y="216" width="440" height="48" rx="8" fill="#1c212c" stroke="#cb7c94" stroke-width="0.8"/>
+                  <circle cx="70" cy="240" r="10" fill="none" stroke="#cb7c94" stroke-width="1.2"/><line x1="63" y1="233" x2="77" y2="247" stroke="#cb7c94" stroke-width="1.5"/><line x1="77" y1="233" x2="63" y2="247" stroke="#cb7c94" stroke-width="1.5"/>
+                  <text x="92" y="238" font-size="10" fill="#A1AABB" font-weight="500">No iterar sobre el resultado</text>
+                  <text x="92" y="252" font-size="8" fill="#8394A3">El primer resultado rara vez es el mejor — refiná</text>
+
+                  <rect x="40" y="272" width="440" height="48" rx="8" fill="#1c212c" stroke="#cb7c94" stroke-width="0.8"/>
+                  <circle cx="70" cy="296" r="10" fill="none" stroke="#cb7c94" stroke-width="1.2"/><line x1="63" y1="289" x2="77" y2="303" stroke="#cb7c94" stroke-width="1.5"/><line x1="77" y1="289" x2="63" y2="303" stroke="#cb7c94" stroke-width="1.5"/>
+                  <text x="92" y="294" font-size="10" fill="#A1AABB" font-weight="500">Ignorar el system prompt</text>
+                  <text x="92" y="308" font-size="8" fill="#8394A3">Es la herramienta mas poderosa que tenes</text>
+
+                  <text x="260" y="345" text-anchor="middle" font-size="8" fill="#b7cc85">Evita estos 5 y tus resultados mejoran al instante</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <!-- ═══ MODULO 3: RAG (slides 13-17) ═══ -->
+
+          <article class="slide" data-index="13" data-module="3" data-tone="purple">
+            <div class="slide-content">
+              <p class="slide-kicker">14 · RAG</p>
+              <h2>El problema: el modelo alucina</h2>
+              <p>¿Que pasa si le preguntas al modelo sobre TU codigo? ¿Sobre la documentacion interna de TU empresa? ¿Sobre datos que se generaron ayer? Alucina. Inventa. Porque no tiene esa informacion. Fue entrenado hace meses con datos publicos.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cerebro con alerta de alucinacion">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="30" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">EL PROBLEMA</text>
+                  <!-- Brain outline -->
+                  <ellipse cx="260" cy="160" rx="80" ry="70" fill="none" stroke="#a3b5d6" stroke-width="1.5" opacity="0.5"/>
+                  <path d="M220 160 Q240 130 260 140 Q280 130 300 160" fill="none" stroke="#a3b5d6" stroke-width="1" opacity="0.3"/>
+                  <!-- Alert triangle -->
+                  <polygon points="260,100 280,140 240,140" fill="none" stroke="#cb7c94" stroke-width="2"/>
+                  <text x="260" y="133" text-anchor="middle" font-size="14" fill="#cb7c94" font-weight="700">!</text>
+                  <!-- Questions around -->
+                  <text x="120" y="120" font-size="9" fill="#dfbd76">"¿Mi codigo?"</text>
+                  <text x="350" y="120" font-size="9" fill="#dfbd76">"¿Mis datos?"</text>
+                  <text x="120" y="220" font-size="9" fill="#dfbd76">"¿Mis docs?"</text>
+                  <text x="350" y="220" font-size="9" fill="#dfbd76">"¿Info de ayer?"</text>
+                  <!-- Answer -->
+                  <rect x="100" y="260" width="320" height="50" rx="10" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="260" y="285" text-anchor="middle" font-size="12" fill="#cb7c94" font-weight="600">ALUCINA. INVENTA. NO SABE.</text>
+                  <text x="260" y="300" text-anchor="middle" font-size="8" fill="#8394A3">Todo lo que no estaba en su entrenamiento no existe para el</text>
+                  <text x="260" y="340" text-anchor="middle" font-size="9" fill="#a3b5d6">La solucion se llama RAG...</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="14" data-module="3" data-tone="purple">
+            <div class="slide-content">
+              <p class="slide-kicker">15 · RAG</p>
+              <h2>La solucion: RAG</h2>
+              <p>Retrieval Augmented Generation: un patron de arquitectura que inyecta informacion relevante al modelo EN EL MOMENTO de la consulta. Tus documentos se indexan, se buscan por similitud, y los fragmentos relevantes se pasan junto con la pregunta.</p>
+            </div>
+            <figure class="slide-figure">
+              <!-- PLACEHOLDER: Generar imagen con el prompt D4 del documento -->
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="D4: Flujo RAG completo — placeholder para imagen generada">
+                <g font-family="Space Grotesk,sans-serif">
+                  <rect x="20" y="20" width="480" height="320" rx="12" fill="#0d1117" stroke="#a3b5d6" stroke-width="1" stroke-dasharray="6 4"/>
+                  <text x="260" y="50" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">FLUJO RAG — PLACEHOLDER</text>
+                  <!-- Simplified RAG flow -->
+                  <text x="260" y="80" text-anchor="middle" font-size="9" fill="#a3b5d6">FASE 1: INDEXACION</text>
+                  <rect x="40" y="90" width="80" height="35" rx="6" fill="#1c212c" stroke="#a3b5d6" stroke-width="0.8"/><text x="80" y="112" text-anchor="middle" font-size="8" fill="#A1AABB">Docs</text>
+                  <text x="130" y="110" font-size="12" fill="#313342">→</text>
+                  <rect x="145" y="90" width="80" height="35" rx="6" fill="#1c212c" stroke="#a3b5d6" stroke-width="0.8"/><text x="185" y="112" text-anchor="middle" font-size="8" fill="#A1AABB">Chunks</text>
+                  <text x="235" y="110" font-size="12" fill="#313342">→</text>
+                  <rect x="250" y="90" width="80" height="35" rx="6" fill="#1c212c" stroke="#a3b5d6" stroke-width="0.8"/><text x="290" y="112" text-anchor="middle" font-size="8" fill="#A1AABB">Embeddings</text>
+                  <text x="340" y="110" font-size="12" fill="#313342">→</text>
+                  <rect x="355" y="90" width="90" height="35" rx="6" fill="#1c212c" stroke="#a3b5d6" stroke-width="0.8"/><text x="400" y="112" text-anchor="middle" font-size="8" fill="#A1AABB">Vector DB</text>
+
+                  <text x="260" y="160" text-anchor="middle" font-size="9" fill="#dfbd76">FASE 2: CONSULTA</text>
+                  <rect x="40" y="170" width="80" height="35" rx="6" fill="#1c212c" stroke="#dfbd76" stroke-width="0.8"/><text x="80" y="192" text-anchor="middle" font-size="8" fill="#A1AABB">Pregunta</text>
+                  <text x="130" y="190" font-size="12" fill="#313342">→</text>
+                  <rect x="145" y="170" width="90" height="35" rx="6" fill="#1c212c" stroke="#dfbd76" stroke-width="0.8"/><text x="190" y="192" text-anchor="middle" font-size="8" fill="#A1AABB">Embedding</text>
+                  <text x="245" y="190" font-size="12" fill="#313342">→</text>
+                  <rect x="255" y="170" width="90" height="35" rx="6" fill="#1c212c" stroke="#dfbd76" stroke-width="0.8"/><text x="300" y="192" text-anchor="middle" font-size="8" fill="#A1AABB">Similitud</text>
+                  <text x="355" y="190" font-size="12" fill="#313342">→</text>
+                  <rect x="365" y="170" width="80" height="35" rx="6" fill="#1c212c" stroke="#dfbd76" stroke-width="0.8"/><text x="405" y="192" text-anchor="middle" font-size="8" fill="#A1AABB">Top-K</text>
+
+                  <text x="260" y="240" text-anchor="middle" font-size="9" fill="#b7cc85">FASE 3: GENERACION</text>
+                  <rect x="100" y="250" width="120" height="35" rx="6" fill="#1c212c" stroke="#b7cc85" stroke-width="0.8"/><text x="160" y="272" text-anchor="middle" font-size="8" fill="#A1AABB">Chunks + Pregunta</text>
+                  <text x="230" y="270" font-size="12" fill="#313342">→</text>
+                  <rect x="245" y="250" width="60" height="35" rx="6" fill="#1c212c" stroke="#b7cc85" stroke-width="0.8"/><text x="275" y="272" text-anchor="middle" font-size="8" fill="#A1AABB">LLM</text>
+                  <text x="315" y="270" font-size="12" fill="#313342">→</text>
+                  <rect x="330" y="250" width="120" height="35" rx="6" fill="#1c212c" stroke="#b7cc85" stroke-width="1.2"/><text x="390" y="272" text-anchor="middle" font-size="8" fill="#b7cc85" font-weight="600">Respuesta real</text>
+
+                  <text x="260" y="320" text-anchor="middle" font-size="8" fill="#8394A3">Reemplaza este SVG con una imagen generada (ver prompt D4 del doc)</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="15" data-module="3" data-tone="purple">
+            <div class="slide-content">
+              <p class="slide-kicker">16 · RAG</p>
+              <h2>Embeddings explicados</h2>
+              <p>Un embedding convierte texto en un vector numerico que captura su significado. Palabras similares ("perro", "gato", "mascota") quedan cerca en el espacio vectorial. Palabras distintas ("economia", "galaxia") quedan lejos. Eso es lo que permite la busqueda por similitud.</p>
+            </div>
+            <figure class="slide-figure">
+              <!-- PLACEHOLDER: Generar imagen con el prompt D5 del documento -->
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="D5: Espacio de embeddings — placeholder para imagen generada">
+                <g font-family="Space Grotesk,sans-serif">
+                  <rect x="20" y="20" width="480" height="320" rx="12" fill="#0d1117" stroke="#a3b5d6" stroke-width="1" stroke-dasharray="6 4"/>
+                  <text x="260" y="50" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">ESPACIO VECTORIAL — PLACEHOLDER</text>
+                  <!-- Grid -->
+                  <line x1="80" y1="280" x2="460" y2="280" stroke="#313342" stroke-width="0.5"/><text x="470" y="284" font-size="7" fill="#8394A3">Dim 1</text>
+                  <line x1="80" y1="70" x2="80" y2="280" stroke="#313342" stroke-width="0.5"/><text x="70" y="66" font-size="7" fill="#8394A3">Dim 2</text>
+                  <!-- Cluster 1: animals -->
+                  <circle cx="180" cy="130" r="4" fill="#7fb4ca"/><text x="190" y="128" font-size="8" fill="#7fb4ca">perro</text>
+                  <circle cx="200" cy="150" r="4" fill="#7fb4ca"/><text x="210" y="148" font-size="8" fill="#7fb4ca">gato</text>
+                  <circle cx="170" cy="160" r="4" fill="#7fb4ca"/><text x="140" y="158" font-size="8" fill="#7fb4ca">mascota</text>
+                  <circle cx="195" cy="175" r="4" fill="#7fb4ca"/><text x="205" y="173" font-size="8" fill="#7fb4ca">cachorro</text>
+                  <ellipse cx="185" cy="155" rx="50" ry="35" fill="none" stroke="#7fb4ca" stroke-width="0.6" stroke-dasharray="4 3" opacity="0.4"/>
+                  <!-- Cluster 2: economy -->
+                  <circle cx="360" cy="100" r="4" fill="#cb7c94"/><text x="370" y="98" font-size="8" fill="#cb7c94">economia</text>
+                  <circle cx="380" cy="120" r="4" fill="#cb7c94"/><text x="390" y="118" font-size="8" fill="#cb7c94">inflacion</text>
+                  <circle cx="350" cy="125" r="4" fill="#cb7c94"/><text x="330" y="138" font-size="8" fill="#cb7c94">PIB</text>
+                  <ellipse cx="365" cy="115" rx="40" ry="25" fill="none" stroke="#cb7c94" stroke-width="0.6" stroke-dasharray="4 3" opacity="0.4"/>
+                  <!-- Cluster 3: code -->
+                  <circle cx="320" cy="230" r="4" fill="#b7cc85"/><text x="330" y="228" font-size="8" fill="#b7cc85">Python</text>
+                  <circle cx="340" cy="250" r="4" fill="#b7cc85"/><text x="350" y="248" font-size="8" fill="#b7cc85">codigo</text>
+                  <circle cx="310" cy="255" r="4" fill="#b7cc85"/><text x="280" y="260" font-size="8" fill="#b7cc85">funcion</text>
+                  <ellipse cx="325" cy="245" rx="40" ry="25" fill="none" stroke="#b7cc85" stroke-width="0.6" stroke-dasharray="4 3" opacity="0.4"/>
+                  <!-- Distance lines -->
+                  <line x1="200" y1="150" x2="350" y2="125" stroke="#dfbd76" stroke-width="0.5" stroke-dasharray="4 3" opacity="0.5"/>
+                  <text x="270" y="132" font-size="7" fill="#dfbd76">lejos</text>
+                  <text x="260" y="300" text-anchor="middle" font-size="8" fill="#8394A3">Similar = cerca. Distinto = lejos. Asi funciona la busqueda semantica.</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="16" data-module="3" data-tone="purple">
+            <div class="slide-content">
+              <p class="slide-kicker">17 · RAG</p>
+              <h2>RAG paso a paso</h2>
+              <p>Tres fases: (1) Indexacion: documentos se parten en chunks, se convierten en embeddings y se guardan en vector DB. (2) Consulta: la pregunta se convierte en embedding, se buscan los chunks mas similares. (3) Generacion: chunks + pregunta van al LLM que genera respuesta con datos reales.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RAG 3 fases">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">RAG EN 3 FASES</text>
+
+                  <rect x="30" y="45" width="460" height="85" rx="10" fill="#1c212c" stroke="#a3b5d6" stroke-width="1"/>
+                  <text x="50" y="66" font-size="12" fill="#a3b5d6" font-weight="700">1</text>
+                  <text x="70" y="66" font-size="10" fill="#a3b5d6" font-weight="600">INDEXACION</text>
+                  <text x="70" y="84" font-size="9" fill="#A1AABB">Documentos → Chunks → Embeddings → Vector DB</text>
+                  <text x="70" y="100" font-size="8" fill="#8394A3">Se hace una vez. Prepara tus datos para busqueda semantica.</text>
+                  <text x="70" y="116" font-size="8" fill="#8394A3">Herramientas: LangChain, LlamaIndex, OpenAI Embeddings API</text>
+
+                  <rect x="30" y="145" width="460" height="85" rx="10" fill="#1c212c" stroke="#dfbd76" stroke-width="1"/>
+                  <text x="50" y="166" font-size="12" fill="#dfbd76" font-weight="700">2</text>
+                  <text x="70" y="166" font-size="10" fill="#dfbd76" font-weight="600">CONSULTA</text>
+                  <text x="70" y="184" font-size="9" fill="#A1AABB">Pregunta → Query Embedding → Busqueda similitud → Top-K chunks</text>
+                  <text x="70" y="200" font-size="8" fill="#8394A3">Se ejecuta en cada pregunta. Encuentra los fragmentos mas relevantes.</text>
+                  <text x="70" y="216" font-size="8" fill="#8394A3">Top-K = los K fragmentos mas similares a la pregunta</text>
+
+                  <rect x="30" y="245" width="460" height="85" rx="10" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="50" y="266" font-size="12" fill="#b7cc85" font-weight="700">3</text>
+                  <text x="70" y="266" font-size="10" fill="#b7cc85" font-weight="600">GENERACION</text>
+                  <text x="70" y="284" font-size="9" fill="#A1AABB">Chunks relevantes + Pregunta original → LLM → Respuesta fundamentada</text>
+                  <text x="70" y="300" font-size="8" fill="#8394A3">El modelo responde con informacion REAL de tus datos, no inventada.</text>
+                  <text x="70" y="316" font-size="8" fill="#b7cc85">Resultado: respuestas basadas en evidencia, no alucinaciones</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="17" data-module="3" data-tone="purple">
+            <div class="slide-content">
+              <p class="slide-kicker">18 · RAG</p>
+              <h2>Cuando usar RAG</h2>
+              <p>Usa RAG cuando tengas documentacion interna, datos privados, codigo propietario o informacion que se actualiza. NO lo uses para conocimiento general, tareas creativas o datos publicos — el modelo ya sabe eso. RAG complementa, no reemplaza el fine-tuning.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cuando usar RAG">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">¿CUANDO USAR RAG?</text>
+                  <!-- SI column -->
+                  <rect x="30" y="45" width="220" height="250" rx="10" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="140" y="70" text-anchor="middle" font-size="11" fill="#b7cc85" font-weight="600">SI — USAR RAG</text>
+                  <line x1="50" y1="80" x2="230" y2="80" stroke="#313342" stroke-width="0.5"/>
+                  <text x="50" y="105" font-size="9" fill="#A1AABB">Documentacion interna</text>
+                  <text x="50" y="130" font-size="9" fill="#A1AABB">Datos privados/sensibles</text>
+                  <text x="50" y="155" font-size="9" fill="#A1AABB">Codigo propietario</text>
+                  <text x="50" y="180" font-size="9" fill="#A1AABB">Info actualizada frecuente</text>
+                  <text x="50" y="205" font-size="9" fill="#A1AABB">Knowledge base empresa</text>
+                  <text x="50" y="230" font-size="9" fill="#A1AABB">Tickets, issues, PRs</text>
+                  <text x="50" y="260" font-size="8" fill="#b7cc85">Todo lo que el modelo NO vio</text>
+
+                  <!-- NO column -->
+                  <rect x="270" y="45" width="220" height="250" rx="10" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="380" y="70" text-anchor="middle" font-size="11" fill="#cb7c94" font-weight="600">NO — SIN RAG</text>
+                  <line x1="290" y1="80" x2="470" y2="80" stroke="#313342" stroke-width="0.5"/>
+                  <text x="290" y="105" font-size="9" fill="#A1AABB">Conocimiento general</text>
+                  <text x="290" y="130" font-size="9" fill="#A1AABB">Tareas creativas</text>
+                  <text x="290" y="155" font-size="9" fill="#A1AABB">Datos publicos conocidos</text>
+                  <text x="290" y="180" font-size="9" fill="#A1AABB">Conceptos de programacion</text>
+                  <text x="290" y="205" font-size="9" fill="#A1AABB">Preguntas generales</text>
+                  <text x="290" y="260" font-size="8" fill="#cb7c94">El modelo ya lo sabe</text>
+
+                  <text x="260" y="325" text-anchor="middle" font-size="9" fill="#dfbd76">RAG complementa al modelo. No reemplaza el fine-tuning.</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <!-- ═══ MODULO 4: DE CHATBOTS A AGENTES (slides 18-26) ═══ -->
+
+          <article class="slide" data-index="18" data-module="4" data-tone="red">
+            <div class="slide-content">
+              <p class="slide-kicker">19 · Agentes</p>
+              <h2>El espectro de la IA</h2>
+              <p>Desde autocompletado hasta sistemas multi-agente. A la izquierda: Copilot predice la siguiente linea. En el medio: ChatGPT conversa. A la derecha: un agente que planifica, ejecuta, verifica y corrige autonomamente. La diferencia critica: un chatbot espera instrucciones, un agente recibe un OBJETIVO.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="D6: Espectro de autocompletado a multi-agente">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">EL ESPECTRO DE LA IA</text>
+                  <!-- Gradient bar -->
+                  <rect x="30" y="60" width="460" height="8" rx="4" fill="#1c212c"/>
+                  <rect x="30" y="60" width="460" height="8" rx="4" fill="url(#s18-grad)"/>
+                  <defs><linearGradient id="s18-grad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#313342"/><stop offset="100%" stop-color="#cb7c94"/></linearGradient></defs>
+                  <!-- 5 nodes -->
+                  <g transform="translate(50,90)">
+                    <circle cx="0" cy="0" r="22" fill="#1c212c" stroke="#313342" stroke-width="1"/><text x="0" y="-3" text-anchor="middle" font-size="14" fill="#8394A3">|</text>
+                    <text x="0" y="38" text-anchor="middle" font-size="9" fill="#A1AABB" font-weight="500">Autocompletado</text>
+                    <text x="0" y="52" text-anchor="middle" font-size="7" fill="#8394A3">Copilot</text>
+                  </g>
+                  <g transform="translate(160,90)">
+                    <circle cx="0" cy="0" r="22" fill="#1c212c" stroke="#a3b5d6" stroke-width="1"/><text x="0" y="4" text-anchor="middle" font-size="11" fill="#a3b5d6">💬</text>
+                    <text x="0" y="38" text-anchor="middle" font-size="9" fill="#A1AABB" font-weight="500">Chatbot</text>
+                    <text x="0" y="52" text-anchor="middle" font-size="7" fill="#8394A3">ChatGPT</text>
+                  </g>
+                  <g transform="translate(260,90)">
+                    <circle cx="0" cy="0" r="22" fill="#1c212c" stroke="#dfbd76" stroke-width="1"/><text x="0" y="4" text-anchor="middle" font-size="11" fill="#dfbd76">🤖</text>
+                    <text x="0" y="38" text-anchor="middle" font-size="9" fill="#A1AABB" font-weight="500">Asistente</text>
+                    <text x="0" y="52" text-anchor="middle" font-size="7" fill="#8394A3">Claude</text>
+                  </g>
+                  <g transform="translate(370,90)">
+                    <circle cx="0" cy="0" r="24" fill="#1c212c" stroke="#cb7c94" stroke-width="1.5"/><text x="0" y="4" text-anchor="middle" font-size="11" fill="#cb7c94">⚡</text>
+                    <text x="0" y="40" text-anchor="middle" font-size="9" fill="#cb7c94" font-weight="600">Agente</text>
+                    <text x="0" y="54" text-anchor="middle" font-size="7" fill="#8394A3">Claude Code</text>
+                  </g>
+                  <g transform="translate(470,90)">
+                    <circle cx="0" cy="0" r="24" fill="#1c212c" stroke="#ff8dd7" stroke-width="1.5"/><text x="0" y="4" text-anchor="middle" font-size="9" fill="#ff8dd7">⚡⚡</text>
+                    <text x="0" y="40" text-anchor="middle" font-size="9" fill="#ff8dd7" font-weight="600">Multi-agente</text>
+                    <text x="0" y="54" text-anchor="middle" font-size="7" fill="#8394A3">Crew AI</text>
+                  </g>
+                  <!-- Key difference -->
+                  <rect x="60" y="220" width="400" height="70" rx="10" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="260" y="250" text-anchor="middle" font-size="11" fill="#cb7c94" font-weight="600">La diferencia critica</text>
+                  <text x="260" y="272" text-anchor="middle" font-size="9" fill="#A1AABB">Chatbot: le decis que hacer en cada paso</text>
+                  <text x="260" y="286" text-anchor="middle" font-size="9" fill="#A1AABB">Agente: le das un OBJETIVO y decide solo como lograrlo</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="19" data-module="4" data-tone="red">
+            <div class="slide-content">
+              <p class="slide-kicker">20 · Agentes</p>
+              <h2>Chatbot vs Agente</h2>
+              <p>Un chatbot RESPONDE preguntas. Un agente HACE cosas. Sin memoria persistente vs con memoria entre sesiones. Sin herramientas vs con acceso a filesystem, APIs, bases de datos. Reactivo vs proactivo. La diferencia es fundamental.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chatbot vs Agente tabla comparativa">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">CHATBOT VS AGENTE</text>
+                  <!-- Headers -->
+                  <rect x="30" y="42" width="140" height="30" rx="4" fill="#232a36"/><text x="100" y="62" text-anchor="middle" font-size="9" fill="#8394A3">DIMENSION</text>
+                  <rect x="170" y="42" width="160" height="30" rx="4" fill="#232a36"/><text x="250" y="62" text-anchor="middle" font-size="9" fill="#a3b5d6">CHATBOT</text>
+                  <rect x="330" y="42" width="160" height="30" rx="4" fill="#232a36"/><text x="410" y="62" text-anchor="middle" font-size="9" fill="#cb7c94">AGENTE</text>
+                  <!-- Rows -->
+                  <rect x="30" y="76" width="140" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="100" y="100" text-anchor="middle" font-size="8" fill="#dfbd76">Accion</text>
+                  <rect x="170" y="76" width="160" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="250" y="100" text-anchor="middle" font-size="8" fill="#A1AABB">Responde preguntas</text>
+                  <rect x="330" y="76" width="160" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="410" y="100" text-anchor="middle" font-size="8" fill="#A1AABB">Ejecuta tareas</text>
+
+                  <rect x="30" y="120" width="140" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="100" y="144" text-anchor="middle" font-size="8" fill="#dfbd76">Memoria</text>
+                  <rect x="170" y="120" width="160" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="250" y="144" text-anchor="middle" font-size="8" fill="#A1AABB">Solo sesion actual</text>
+                  <rect x="330" y="120" width="160" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="410" y="144" text-anchor="middle" font-size="8" fill="#A1AABB">Persistente (Engram)</text>
+
+                  <rect x="30" y="164" width="140" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="100" y="188" text-anchor="middle" font-size="8" fill="#dfbd76">Herramientas</text>
+                  <rect x="170" y="164" width="160" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="250" y="188" text-anchor="middle" font-size="8" fill="#A1AABB">Ninguna</text>
+                  <rect x="330" y="164" width="160" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="410" y="188" text-anchor="middle" font-size="8" fill="#A1AABB">Files, APIs, DB, Git</text>
+
+                  <rect x="30" y="208" width="140" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="100" y="232" text-anchor="middle" font-size="8" fill="#dfbd76">Planificacion</text>
+                  <rect x="170" y="208" width="160" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="250" y="232" text-anchor="middle" font-size="8" fill="#A1AABB">No planifica</text>
+                  <rect x="330" y="208" width="160" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="410" y="232" text-anchor="middle" font-size="8" fill="#A1AABB">Descompone en pasos</text>
+
+                  <rect x="30" y="252" width="140" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="100" y="276" text-anchor="middle" font-size="8" fill="#dfbd76">Autonomia</text>
+                  <rect x="170" y="252" width="160" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="250" y="276" text-anchor="middle" font-size="8" fill="#A1AABB">Reactivo (espera)</text>
+                  <rect x="330" y="252" width="160" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="410" y="276" text-anchor="middle" font-size="8" fill="#A1AABB">Proactivo (actua)</text>
+
+                  <text x="260" y="320" text-anchor="middle" font-size="10" fill="#cb7c94" font-weight="600">"Un chatbot responde. Un agente HACE."</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="20" data-module="4" data-tone="red">
+            <div class="slide-content">
+              <p class="slide-kicker">21 · Agentes</p>
+              <h2>Anatomia de un agente</h2>
+              <p>Un agente tiene 4 componentes: el LLM como cerebro que razona, las herramientas como manos que ejecutan, la memoria como experiencia acumulada, y la planificacion como estrategia. Los cuatro trabajan en ciclo continuo.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="D7: Hub central con 4 componentes del agente">
+                <defs>
+                  <filter id="s20-glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="6" result="b"/><feFlood flood-color="#cb7c94" flood-opacity="0.3"/><feComposite in2="b" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="24" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">ANATOMIA DE UN AGENTE</text>
+                  <!-- Center: LLM Brain -->
+                  <circle cx="260" cy="180" r="40" fill="#1c212c" stroke="#cb7c94" stroke-width="2" filter="url(#s20-glow)"/>
+                  <text x="260" y="176" text-anchor="middle" font-size="10" fill="#cb7c94" font-weight="600">LLM</text>
+                  <text x="260" y="192" text-anchor="middle" font-size="8" fill="#8394A3">Cerebro</text>
+                  <!-- Top: Planning -->
+                  <line x1="260" y1="140" x2="260" y2="75" stroke="#dfbd76" stroke-width="1" stroke-dasharray="4 3"/>
+                  <circle cx="260" cy="65" r="28" fill="#1c212c" stroke="#dfbd76" stroke-width="1.2"/>
+                  <text x="260" y="62" text-anchor="middle" font-size="9" fill="#dfbd76" font-weight="500">Planificacion</text>
+                  <text x="260" y="75" text-anchor="middle" font-size="7" fill="#8394A3">Estrategia</text>
+                  <!-- Right: Tools -->
+                  <line x1="300" y1="180" x2="370" y2="180" stroke="#7aa89f" stroke-width="1" stroke-dasharray="4 3"/>
+                  <circle cx="400" cy="180" r="28" fill="#1c212c" stroke="#7aa89f" stroke-width="1.2"/>
+                  <text x="400" y="177" text-anchor="middle" font-size="9" fill="#7aa89f" font-weight="500">Tools</text>
+                  <text x="400" y="190" text-anchor="middle" font-size="7" fill="#8394A3">Manos</text>
+                  <!-- Bottom: Memory -->
+                  <line x1="260" y1="220" x2="260" y2="280" stroke="#7fb4ca" stroke-width="1" stroke-dasharray="4 3"/>
+                  <circle cx="260" cy="305" r="28" fill="#1c212c" stroke="#7fb4ca" stroke-width="1.2"/>
+                  <text x="260" y="302" text-anchor="middle" font-size="9" fill="#7fb4ca" font-weight="500">Memoria</text>
+                  <text x="260" y="315" text-anchor="middle" font-size="7" fill="#8394A3">Experiencia</text>
+                  <!-- Left: Perception -->
+                  <line x1="220" y1="180" x2="150" y2="180" stroke="#a3b5d6" stroke-width="1" stroke-dasharray="4 3"/>
+                  <circle cx="120" cy="180" r="28" fill="#1c212c" stroke="#a3b5d6" stroke-width="1.2"/>
+                  <text x="120" y="177" text-anchor="middle" font-size="9" fill="#a3b5d6" font-weight="500">Percepcion</text>
+                  <text x="120" y="190" text-anchor="middle" font-size="7" fill="#8394A3">Input</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="21" data-module="4" data-tone="red">
+            <div class="slide-content">
+              <p class="slide-kicker">22 · Agentes</p>
+              <h2>MCPs — Model Context Protocol</h2>
+              <p>Los MCPs son el USB-C de los agentes: un estandar para conectar cualquier herramienta. Antes, cada integracion era custom. Con MCP, hay un protocolo universal. Un agente con soporte MCP puede conectarse a GitHub, Slack, bases de datos, filesystem, cualquier cosa.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="D8: MCP hub-and-spoke diagram">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="24" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">MCP — MODEL CONTEXT PROTOCOL</text>
+                  <!-- Center: Agent -->
+                  <circle cx="260" cy="180" r="45" fill="#1c212c" stroke="#cb7c94" stroke-width="2"/>
+                  <text x="260" y="176" text-anchor="middle" font-size="10" fill="#cb7c94" font-weight="600">AI Agent</text>
+                  <text x="260" y="192" text-anchor="middle" font-size="7" fill="#8394A3">MCP Client</text>
+                  <!-- Ring -->
+                  <circle cx="260" cy="180" r="70" fill="none" stroke="#313342" stroke-width="0.8" stroke-dasharray="4 4"/>
+                  <!-- Services around -->
+                  <line x1="260" y1="110" x2="260" y2="65" stroke="#7fb4ca" stroke-width="0.8"/>
+                  <rect x="225" y="40" width="70" height="28" rx="6" fill="#1c212c" stroke="#7fb4ca" stroke-width="1"/><text x="260" y="58" text-anchor="middle" font-size="8" fill="#7fb4ca">GitHub</text>
+
+                  <line x1="310" y1="140" x2="370" y2="100" stroke="#b7cc85" stroke-width="0.8"/>
+                  <rect x="355" y="78" width="70" height="28" rx="6" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/><text x="390" y="96" text-anchor="middle" font-size="8" fill="#b7cc85">Slack</text>
+
+                  <line x1="310" y1="210" x2="370" y2="240" stroke="#dfbd76" stroke-width="0.8"/>
+                  <rect x="355" y="228" width="70" height="28" rx="6" fill="#1c212c" stroke="#dfbd76" stroke-width="1"/><text x="390" y="246" text-anchor="middle" font-size="8" fill="#dfbd76">Database</text>
+
+                  <line x1="260" y1="250" x2="260" y2="290" stroke="#a3b5d6" stroke-width="0.8"/>
+                  <rect x="225" y="288" width="70" height="28" rx="6" fill="#1c212c" stroke="#a3b5d6" stroke-width="1"/><text x="260" y="306" text-anchor="middle" font-size="8" fill="#a3b5d6">Files</text>
+
+                  <line x1="210" y1="210" x2="150" y2="240" stroke="#ff8dd7" stroke-width="0.8"/>
+                  <rect x="95" y="228" width="70" height="28" rx="6" fill="#1c212c" stroke="#ff8dd7" stroke-width="1"/><text x="130" y="246" text-anchor="middle" font-size="8" fill="#ff8dd7">Web APIs</text>
+
+                  <line x1="210" y1="140" x2="150" y2="100" stroke="#deba87" stroke-width="0.8"/>
+                  <rect x="95" y="78" width="70" height="28" rx="6" fill="#1c212c" stroke="#deba87" stroke-width="1"/><text x="130" y="96" text-anchor="middle" font-size="8" fill="#deba87">CI/CD</text>
+
+                  <text x="260" y="345" text-anchor="middle" font-size="9" fill="#dfbd76">Un protocolo, cualquier herramienta</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="22" data-module="4" data-tone="red">
+            <div class="slide-content">
+              <p class="slide-kicker">23 · Agentes</p>
+              <h2>MCPs en la practica</h2>
+              <p>Ejemplo real: un agente con MCP de GitHub puede leer issues, crear PRs y revisar codigo. El flujo: el usuario pide algo, el agente planifica, llama al MCP server, ejecuta la accion, y reporta el resultado. Y lo mejor: podes crear tus propios servidores MCP.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flujo MCP en practica">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">MCP EN PRACTICA — FLUJO GITHUB</text>
+                  <!-- Step boxes -->
+                  <rect x="30" y="55" width="90" height="50" rx="8" fill="#1c212c" stroke="#dfbd76" stroke-width="1"/>
+                  <text x="75" y="76" text-anchor="middle" font-size="8" fill="#dfbd76" font-weight="600">1. USUARIO</text>
+                  <text x="75" y="92" text-anchor="middle" font-size="7" fill="#8394A3">"Fix este bug"</text>
+
+                  <line x1="120" y1="80" x2="145" y2="80" stroke="#313342" stroke-width="1" stroke-dasharray="3 3"/><polygon points="143,76 150,80 143,84" fill="#313342"/>
+
+                  <rect x="150" y="55" width="90" height="50" rx="8" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="195" y="76" text-anchor="middle" font-size="8" fill="#cb7c94" font-weight="600">2. AGENTE</text>
+                  <text x="195" y="92" text-anchor="middle" font-size="7" fill="#8394A3">Planifica pasos</text>
+
+                  <line x1="240" y1="80" x2="265" y2="80" stroke="#313342" stroke-width="1" stroke-dasharray="3 3"/><polygon points="263,76 270,80 263,84" fill="#313342"/>
+
+                  <rect x="270" y="55" width="90" height="50" rx="8" fill="#1c212c" stroke="#7fb4ca" stroke-width="1"/>
+                  <text x="315" y="76" text-anchor="middle" font-size="8" fill="#7fb4ca" font-weight="600">3. MCP</text>
+                  <text x="315" y="92" text-anchor="middle" font-size="7" fill="#8394A3">Llama GitHub</text>
+
+                  <line x1="360" y1="80" x2="385" y2="80" stroke="#313342" stroke-width="1" stroke-dasharray="3 3"/><polygon points="383,76 390,80 383,84" fill="#313342"/>
+
+                  <rect x="390" y="55" width="100" height="50" rx="8" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="440" y="76" text-anchor="middle" font-size="8" fill="#b7cc85" font-weight="600">4. RESULTADO</text>
+                  <text x="440" y="92" text-anchor="middle" font-size="7" fill="#8394A3">PR creado</text>
+
+                  <!-- Detailed actions -->
+                  <rect x="40" y="130" width="440" height="170" rx="10" fill="#0d1117" stroke="#313342" stroke-width="0.8"/>
+                  <text x="60" y="155" font-size="9" fill="#8394A3">// El agente usa MCPs para:</text>
+                  <text x="60" y="175" font-size="9" fill="#b7cc85">gh_read_issue(#42)</text><text x="220" y="175" font-size="8" fill="#8394A3">→ Lee el issue</text>
+                  <text x="60" y="195" font-size="9" fill="#b7cc85">file_read("src/auth.ts")</text><text x="240" y="195" font-size="8" fill="#8394A3">→ Lee el codigo</text>
+                  <text x="60" y="215" font-size="9" fill="#b7cc85">file_edit("src/auth.ts")</text><text x="240" y="215" font-size="8" fill="#8394A3">→ Aplica el fix</text>
+                  <text x="60" y="235" font-size="9" fill="#b7cc85">bash("npm test")</text><text x="210" y="235" font-size="8" fill="#8394A3">→ Corre tests</text>
+                  <text x="60" y="255" font-size="9" fill="#b7cc85">gh_create_pr(branch, body)</text><text x="275" y="255" font-size="8" fill="#8394A3">→ Crea el PR</text>
+                  <text x="60" y="280" font-size="9" fill="#dfbd76">// Todo sin intervencion humana</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="23" data-module="4" data-tone="red">
+            <div class="slide-content">
+              <p class="slide-kicker">24 · Agentes</p>
+              <h2>SKILLs — Capacidades modulares</h2>
+              <p>Un SKILL es un paquete de instrucciones + herramientas que le da al agente una capacidad especifica. Como un plugin con cerebro. Ejemplo: SKILL de "crear documentos DOCX" incluye instrucciones, templates y validaciones. Se cargan bajo demanda, no todo junto.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skills como modulos">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">SKILLS — CAPACIDADES MODULARES</text>
+                  <!-- Skill blocks -->
+                  <rect x="30" y="55" width="140" height="110" rx="10" fill="#1c212c" stroke="#b7cc85" stroke-width="1.2"/>
+                  <text x="100" y="78" text-anchor="middle" font-size="9" fill="#b7cc85" font-weight="600">SKILL: React</text>
+                  <line x1="45" y1="86" x2="155" y2="86" stroke="#313342" stroke-width="0.5"/>
+                  <text x="50" y="102" font-size="7" fill="#A1AABB">- Instrucciones TSX</text>
+                  <text x="50" y="115" font-size="7" fill="#A1AABB">- Patrones hooks</text>
+                  <text x="50" y="128" font-size="7" fill="#A1AABB">- Testing con Vitest</text>
+                  <text x="50" y="141" font-size="7" fill="#A1AABB">- ~80 lineas</text>
+                  <text x="100" y="158" text-anchor="middle" font-size="7" fill="#b7cc85">On-demand</text>
+
+                  <rect x="190" y="55" width="140" height="110" rx="10" fill="#1c212c" stroke="#7fb4ca" stroke-width="1.2"/>
+                  <text x="260" y="78" text-anchor="middle" font-size="9" fill="#7fb4ca" font-weight="600">SKILL: Go Testing</text>
+                  <line x1="205" y1="86" x2="315" y2="86" stroke="#313342" stroke-width="0.5"/>
+                  <text x="210" y="102" font-size="7" fill="#A1AABB">- Bubbletea TUI</text>
+                  <text x="210" y="115" font-size="7" fill="#A1AABB">- Table-driven tests</text>
+                  <text x="210" y="128" font-size="7" fill="#A1AABB">- teatest patterns</text>
+                  <text x="210" y="141" font-size="7" fill="#A1AABB">- ~60 lineas</text>
+                  <text x="260" y="158" text-anchor="middle" font-size="7" fill="#7fb4ca">On-demand</text>
+
+                  <rect x="350" y="55" width="140" height="110" rx="10" fill="#1c212c" stroke="#dfbd76" stroke-width="1.2"/>
+                  <text x="420" y="78" text-anchor="middle" font-size="9" fill="#dfbd76" font-weight="600">SKILL: DOCX</text>
+                  <line x1="365" y1="86" x2="475" y2="86" stroke="#313342" stroke-width="0.5"/>
+                  <text x="370" y="102" font-size="7" fill="#A1AABB">- Templates Word</text>
+                  <text x="370" y="115" font-size="7" fill="#A1AABB">- Estilos + formato</text>
+                  <text x="370" y="128" font-size="7" fill="#A1AABB">- Validacion salida</text>
+                  <text x="370" y="141" font-size="7" fill="#A1AABB">- ~50 lineas</text>
+                  <text x="420" y="158" text-anchor="middle" font-size="7" fill="#dfbd76">On-demand</text>
+
+                  <!-- vs monolithic -->
+                  <rect x="60" y="195" width="400" height="55" rx="10" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="260" y="218" text-anchor="middle" font-size="9" fill="#cb7c94" font-weight="600">Sin SKILLs: 2400+ lineas cargadas SIEMPRE</text>
+                  <text x="260" y="236" text-anchor="middle" font-size="8" fill="#8394A3">Con SKILLs: ~80 lineas cargadas SOLO cuando se necesitan</text>
+
+                  <rect x="60" y="265" width="400" height="45" rx="10" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="260" y="292" text-anchor="middle" font-size="10" fill="#b7cc85">Plugin con cerebro: instrucciones + tools + validaciones</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="24" data-module="4" data-tone="red">
+            <div class="slide-content">
+              <p class="slide-kicker">25 · Agentes</p>
+              <h2>Engram — Memoria persistente</h2>
+              <p>Por defecto, un agente olvida todo entre conversaciones. Engram resuelve eso: guarda contexto relevante (decisiones, bugs, convenciones) y lo recupera automaticamente cuando es necesario. Es la diferencia entre un agente amnesico y uno que aprende.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Engram memoria persistente">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">ENGRAM — MEMORIA PERSISTENTE</text>
+                  <!-- Session 1 -->
+                  <rect x="30" y="50" width="180" height="100" rx="10" fill="#1c212c" stroke="#7fb4ca" stroke-width="1"/>
+                  <text x="120" y="72" text-anchor="middle" font-size="9" fill="#7fb4ca" font-weight="600">Sesion 1</text>
+                  <text x="50" y="92" font-size="8" fill="#A1AABB">"Elegimos Zustand"</text>
+                  <text x="50" y="108" font-size="8" fill="#A1AABB">"Fix N+1 en UserList"</text>
+                  <text x="50" y="124" font-size="8" fill="#A1AABB">"Auth con JWT refresh"</text>
+                  <text x="50" y="140" font-size="8" fill="#b7cc85">→ mem_save()</text>
+                  <!-- Arrow to Engram -->
+                  <line x1="210" y1="100" x2="230" y2="100" stroke="#dfbd76" stroke-width="1"/><polygon points="228,96 236,100 228,104" fill="#dfbd76"/>
+                  <!-- Engram DB -->
+                  <rect x="236" y="60" width="80" height="80" rx="12" fill="#1c212c" stroke="#dfbd76" stroke-width="1.5"/>
+                  <text x="276" y="96" text-anchor="middle" font-size="10" fill="#dfbd76" font-weight="600">Engram</text>
+                  <text x="276" y="112" text-anchor="middle" font-size="7" fill="#8394A3">Persiste</text>
+                  <text x="276" y="125" text-anchor="middle" font-size="7" fill="#8394A3">entre sesiones</text>
+                  <!-- Arrow to Session 2 -->
+                  <line x1="316" y1="100" x2="336" y2="100" stroke="#dfbd76" stroke-width="1"/><polygon points="334,96 342,100 334,104" fill="#dfbd76"/>
+                  <!-- Session 2 -->
+                  <rect x="342" y="50" width="150" height="100" rx="10" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="417" y="72" text-anchor="middle" font-size="9" fill="#b7cc85" font-weight="600">Sesion 2</text>
+                  <text x="360" y="92" font-size="8" fill="#b7cc85">← mem_search()</text>
+                  <text x="360" y="112" font-size="8" fill="#A1AABB">"Ya se que usamos</text>
+                  <text x="360" y="126" font-size="8" fill="#A1AABB"> Zustand y JWT..."</text>
+                  <text x="360" y="142" font-size="8" fill="#A1AABB">Continua sin repetir</text>
+
+                  <!-- Key benefit -->
+                  <rect x="60" y="180" width="400" height="70" rx="10" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="260" y="210" text-anchor="middle" font-size="10" fill="#cb7c94" font-weight="600">Sin Engram: cada sesion empieza de cero</text>
+                  <text x="260" y="232" text-anchor="middle" font-size="10" fill="#b7cc85" font-weight="600">Con Engram: el agente recuerda y evoluciona</text>
+
+                  <text x="260" y="290" text-anchor="middle" font-size="9" fill="#8394A3">Guarda: decisiones, bugs, convenciones, descubrimientos</text>
+                  <text x="260" y="308" text-anchor="middle" font-size="9" fill="#8394A3">Recupera: automaticamente cuando es relevante</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="25" data-module="4" data-tone="red">
+            <div class="slide-content">
+              <p class="slide-kicker">26 · Agentes</p>
+              <h2>El loop del agente</h2>
+              <p>Todo agente sigue un ciclo: Percibir (recibe input), Pensar (razona sobre que hacer), Actuar (usa herramientas), Observar (evalua el resultado). Repite hasta completar la tarea. Es el patron fundamental.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Loop del agente ciclico">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">EL LOOP DEL AGENTE</text>
+                  <!-- Circular path -->
+                  <circle cx="260" cy="190" r="100" fill="none" stroke="#313342" stroke-width="0.8" stroke-dasharray="6 4"/>
+                  <!-- 4 nodes on circle -->
+                  <rect x="225" y="65" width="70" height="36" rx="8" fill="#1c212c" stroke="#7fb4ca" stroke-width="1.2"/><text x="260" y="86" text-anchor="middle" font-size="9" fill="#7fb4ca" font-weight="500">Percibir</text>
+                  <rect x="340" y="168" width="70" height="36" rx="8" fill="#1c212c" stroke="#dfbd76" stroke-width="1.2"/><text x="375" y="190" text-anchor="middle" font-size="9" fill="#dfbd76" font-weight="500">Pensar</text>
+                  <rect x="225" y="275" width="70" height="36" rx="8" fill="#1c212c" stroke="#b7cc85" stroke-width="1.2"/><text x="260" y="296" text-anchor="middle" font-size="9" fill="#b7cc85" font-weight="500">Actuar</text>
+                  <rect x="150" y="168" width="70" height="36" rx="8" fill="#1c212c" stroke="#a3b5d6" stroke-width="1.2"/><text x="185" y="190" text-anchor="middle" font-size="9" fill="#a3b5d6" font-weight="500">Observar</text>
+                  <!-- Arrows -->
+                  <path d="M295 85 Q340 110 340 168" fill="none" stroke="#dfbd76" stroke-width="0.8" marker-end="url(#s25-arrow)"/>
+                  <path d="M375 204 Q370 260 295 290" fill="none" stroke="#b7cc85" stroke-width="0.8" marker-end="url(#s25-arrow)"/>
+                  <path d="M225 290 Q180 260 180 204" fill="none" stroke="#a3b5d6" stroke-width="0.8" marker-end="url(#s25-arrow)"/>
+                  <path d="M185 168 Q190 110 225 90" fill="none" stroke="#7fb4ca" stroke-width="0.8" marker-end="url(#s25-arrow)"/>
+                  <defs><marker id="s25-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#8394A3"/></marker></defs>
+                  <!-- Center label -->
+                  <text x="260" y="186" text-anchor="middle" font-size="9" fill="#8394A3">Repite hasta</text>
+                  <text x="260" y="200" text-anchor="middle" font-size="9" fill="#8394A3">completar</text>
+                  <text x="260" y="345" text-anchor="middle" font-size="9" fill="#cb7c94">El patron fundamental de todo agente autonomo</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="26" data-module="4" data-tone="red">
+            <div class="slide-content">
+              <p class="slide-kicker">27 · Demo en vivo</p>
+              <h2>Agente en accion</h2>
+              <p>Demo: le damos un objetivo a un agente (Claude Code u OpenCode): "Crea un endpoint REST en Express con TypeScript que valide emails con Zod. Incluye tests." Observamos como planifica, escribe codigo, ejecuta tests y corrige errores. Nadie le dice paso a paso — le dimos un OBJETIVO.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Terminal con agente ejecutando">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="20" text-anchor="middle" font-size="10" letter-spacing="2" fill="#cb7c94">DEMO EN VIVO</text>
+                  <rect x="30" y="30" width="460" height="300" rx="12" fill="#0d1117" stroke="#313342" stroke-width="1"/>
+                  <circle cx="54" cy="50" r="5" fill="#cb7c94" opacity="0.8"/><circle cx="70" cy="50" r="5" fill="#dfbd76" opacity="0.8"/><circle cx="86" cy="50" r="5" fill="#b7cc85" opacity="0.8"/>
+                  <text x="200" y="53" font-size="8" fill="#8394A3">claude-code</text>
+                  <line x1="30" y1="62" x2="490" y2="62" stroke="#313342" stroke-width="0.5"/>
+
+                  <text x="50" y="82" font-size="9" fill="#b7cc85">$</text><text x="60" y="82" font-size="9" fill="#A1AABB"> "Crea endpoint POST /validate-email con Zod + tests"</text>
+                  <text x="50" y="100" font-size="9" fill="#8394A3">Planificando...</text>
+                  <text x="50" y="118" font-size="9" fill="#7fb4ca">  [1/4] Crear schema de validacion (Zod)</text>
+                  <text x="50" y="134" font-size="9" fill="#7fb4ca">  [2/4] Crear endpoint POST /validate-email</text>
+                  <text x="50" y="150" font-size="9" fill="#7fb4ca">  [3/4] Escribir tests con Vitest</text>
+                  <text x="50" y="166" font-size="9" fill="#7fb4ca">  [4/4] Ejecutar tests y verificar</text>
+                  <text x="50" y="190" font-size="9" fill="#b7cc85">Escribiendo src/schemas/email.ts...</text>
+                  <text x="50" y="206" font-size="9" fill="#b7cc85">Escribiendo src/routes/validate-email.ts...</text>
+                  <text x="50" y="222" font-size="9" fill="#b7cc85">Escribiendo tests/validate-email.test.ts...</text>
+                  <text x="50" y="244" font-size="9" fill="#dfbd76">Ejecutando: npm test</text>
+                  <text x="50" y="262" font-size="9" fill="#b7cc85">  Tests: 4 passed, 0 failed</text>
+                  <text x="50" y="280" font-size="9" fill="#b7cc85">  All tests passed!</text>
+                  <text x="50" y="306" font-size="9" fill="#dfbd76">Tarea completada. 3 archivos creados, 4 tests passing.</text>
+                  <text x="50" y="322" font-size="9" fill="#8394A3">// Nadie le dijo HOW. Solo le dimos el WHAT.</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <!-- ═══ MODULO 5: STACK MODERNO (slides 27-34) ═══ -->
+
+          <article class="slide" data-index="27" data-module="5" data-tone="orange">
+            <div class="slide-content">
+              <p class="slide-kicker">28 · Stack Moderno</p>
+              <h2>El nuevo flujo de trabajo</h2>
+              <p>El codigo ya no se escribe solo. Se dirige. Antes: IDE + Stack Overflow + copiar/pegar. Ahora: Spec + Agente + Revision humana. El programador pasa de escritor a director. Pero director informado — tenes que entender lo que dirigis.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Antes vs ahora flujo de trabajo">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">EL NUEVO FLUJO DE TRABAJO</text>
+                  <!-- Before -->
+                  <rect x="30" y="50" width="220" height="140" rx="10" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="140" y="72" text-anchor="middle" font-size="10" fill="#cb7c94" font-weight="600">ANTES</text>
+                  <text x="50" y="96" font-size="9" fill="#A1AABB">1. Abrir IDE</text>
+                  <text x="50" y="116" font-size="9" fill="#A1AABB">2. Googlear / Stack Overflow</text>
+                  <text x="50" y="136" font-size="9" fill="#A1AABB">3. Copiar / pegar</text>
+                  <text x="50" y="156" font-size="9" fill="#A1AABB">4. Debuggear 3 horas</text>
+                  <text x="50" y="176" font-size="9" fill="#cb7c94">5. Repetir...</text>
+                  <!-- After -->
+                  <rect x="270" y="50" width="220" height="140" rx="10" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="380" y="72" text-anchor="middle" font-size="10" fill="#b7cc85" font-weight="600">AHORA</text>
+                  <text x="290" y="96" font-size="9" fill="#A1AABB">1. Escribir Spec</text>
+                  <text x="290" y="116" font-size="9" fill="#A1AABB">2. Lanzar Agente</text>
+                  <text x="290" y="136" font-size="9" fill="#A1AABB">3. Revisar resultado</text>
+                  <text x="290" y="156" font-size="9" fill="#A1AABB">4. Iterar si necesario</text>
+                  <text x="290" y="176" font-size="9" fill="#b7cc85">5. Merge y deploy</text>
+                  <!-- Key insight -->
+                  <rect x="80" y="220" width="360" height="60" rx="10" fill="#1c212c" stroke="#deba87" stroke-width="1"/>
+                  <text x="260" y="248" text-anchor="middle" font-size="11" fill="#deba87" font-weight="600">"El codigo ya no se escribe. Se dirige."</text>
+                  <text x="260" y="268" text-anchor="middle" font-size="9" fill="#8394A3">Pero director INFORMADO — tenes que entender lo que dirigis</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="28" data-module="5" data-tone="orange">
+            <div class="slide-content">
+              <p class="slide-kicker">29 · Stack Moderno</p>
+              <h2>SDD — Spec Driven Development</h2>
+              <p>Antes de escribir codigo, escribi una spec. Una spec define QUE queres construir: objetivo, contexto, requisitos, restricciones, criterios de aceptacion. La calidad de lo que genera el agente es directamente proporcional a la calidad de la spec.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="D9: Ciclo SDD">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="24" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">SDD — SPEC DRIVEN DEVELOPMENT</text>
+                  <!-- Circular flow -->
+                  <circle cx="260" cy="185" r="95" fill="none" stroke="#313342" stroke-width="0.6" stroke-dasharray="4 4"/>
+                  <!-- 5 steps -->
+                  <rect x="225" y="65" width="70" height="36" rx="8" fill="#1c212c" stroke="#dfbd76" stroke-width="1.2"/>
+                  <text x="260" y="80" text-anchor="middle" font-size="7" fill="#dfbd76" font-weight="600">1. WRITE</text>
+                  <text x="260" y="92" text-anchor="middle" font-size="7" fill="#8394A3">Spec</text>
+
+                  <rect x="345" y="135" width="70" height="36" rx="8" fill="#1c212c" stroke="#7aa89f" stroke-width="1.2"/>
+                  <text x="380" y="150" text-anchor="middle" font-size="7" fill="#7aa89f" font-weight="600">2. FEED</text>
+                  <text x="380" y="162" text-anchor="middle" font-size="7" fill="#8394A3">Agent</text>
+
+                  <rect x="320" y="245" width="70" height="36" rx="8" fill="#1c212c" stroke="#7fb4ca" stroke-width="1.2"/>
+                  <text x="355" y="260" text-anchor="middle" font-size="7" fill="#7fb4ca" font-weight="600">3. GENERATE</text>
+                  <text x="355" y="272" text-anchor="middle" font-size="7" fill="#8394A3">Code</text>
+
+                  <rect x="145" y="245" width="70" height="36" rx="8" fill="#1c212c" stroke="#cb7c94" stroke-width="1.2"/>
+                  <text x="180" y="260" text-anchor="middle" font-size="7" fill="#cb7c94" font-weight="600">4. REVIEW</text>
+                  <text x="180" y="272" text-anchor="middle" font-size="7" fill="#8394A3">Human</text>
+
+                  <rect x="115" y="135" width="70" height="36" rx="8" fill="#1c212c" stroke="#deba87" stroke-width="1.2"/>
+                  <text x="150" y="150" text-anchor="middle" font-size="7" fill="#deba87" font-weight="600">5. ITERATE</text>
+                  <text x="150" y="162" text-anchor="middle" font-size="7" fill="#8394A3">Refine</text>
+
+                  <!-- Center -->
+                  <text x="260" y="182" text-anchor="middle" font-size="9" fill="#deba87" font-weight="500">SDD</text>
+                  <text x="260" y="196" text-anchor="middle" font-size="7" fill="#8394A3">Spec → Code</text>
+
+                  <!-- Key message -->
+                  <rect x="80" y="305" width="360" height="35" rx="8" fill="#1c212c" stroke="#deba87" stroke-width="0.8"/>
+                  <text x="260" y="326" text-anchor="middle" font-size="9" fill="#deba87">Buena spec = buen codigo. Mala spec = basura.</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="29" data-module="5" data-tone="orange">
+            <div class="slide-content">
+              <p class="slide-kicker">30 · Stack Moderno</p>
+              <h2>Estructura de una Spec</h2>
+              <p>Una spec tiene: Objetivo (que queres lograr), Contexto tecnico (stack, dependencias), Requisitos funcionales (que debe hacer), Restricciones (que NO debe hacer), y Criterios de aceptacion (como saber que esta bien). Una buena spec = mejor codigo generado.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Estructura de spec.md">
+                <g font-family="Space Grotesk,sans-serif">
+                  <rect x="40" y="15" width="440" height="330" rx="12" fill="#0d1117" stroke="#deba87" stroke-width="1"/>
+                  <text x="60" y="40" font-size="9" fill="#8394A3">spec.md — Tu contrato con el agente</text>
+                  <line x1="40" y1="50" x2="480" y2="50" stroke="#313342" stroke-width="0.5"/>
+                  <text x="60" y="72" font-size="10" fill="#deba87" font-weight="600"># Spec: Endpoint de validacion de emails</text>
+                  <text x="60" y="96" font-size="9" fill="#b7cc85" font-weight="600">## Objetivo</text>
+                  <text x="60" y="112" font-size="8" fill="#A1AABB">Crear un endpoint POST /validate-email que valide</text>
+                  <text x="60" y="126" font-size="8" fill="#A1AABB">formato y dominio de direcciones de email.</text>
+                  <text x="60" y="148" font-size="9" fill="#7fb4ca" font-weight="600">## Contexto tecnico</text>
+                  <text x="60" y="164" font-size="8" fill="#A1AABB">Express + TypeScript + Zod + PostgreSQL</text>
+                  <text x="60" y="186" font-size="9" fill="#a3b5d6" font-weight="600">## Requisitos funcionales</text>
+                  <text x="60" y="202" font-size="8" fill="#A1AABB">- Validar formato RFC 5322</text>
+                  <text x="60" y="216" font-size="8" fill="#A1AABB">- Verificar dominio con DNS lookup</text>
+                  <text x="60" y="230" font-size="8" fill="#A1AABB">- Retornar 200 con { valid: boolean, reason: string }</text>
+                  <text x="60" y="252" font-size="9" fill="#cb7c94" font-weight="600">## Restricciones</text>
+                  <text x="60" y="268" font-size="8" fill="#A1AABB">- No usar librerias externas de validacion</text>
+                  <text x="60" y="282" font-size="8" fill="#A1AABB">- Timeout de DNS: maximo 3 segundos</text>
+                  <text x="60" y="304" font-size="9" fill="#dfbd76" font-weight="600">## Criterios de aceptacion</text>
+                  <text x="60" y="320" font-size="8" fill="#A1AABB">- Tests pasan con 100% coverage en el endpoint</text>
+                  <text x="60" y="334" font-size="8" fill="#A1AABB">- TypeScript strict sin errores</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="30" data-module="5" data-tone="orange">
+            <div class="slide-content">
+              <p class="slide-kicker">31 · Stack Moderno</p>
+              <h2>Worktrees — Paralelismo real</h2>
+              <p>Git worktrees te permiten trabajar en multiples features simultaneamente sin conflictos. Cada worktree tiene su propio directorio con su propio agente. Un agente en login, otro en la API, otro arreglando bugs. Paralelismo real.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama de worktrees">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">WORKTREES — PARALELISMO REAL</text>
+                  <!-- Main branch -->
+                  <rect x="200" y="50" width="120" height="36" rx="8" fill="#1c212c" stroke="#deba87" stroke-width="1.5"/>
+                  <text x="260" y="72" text-anchor="middle" font-size="10" fill="#deba87" font-weight="600">main</text>
+                  <!-- Branches -->
+                  <line x1="220" y1="86" x2="100" y2="130" stroke="#b7cc85" stroke-width="1" stroke-dasharray="4 3"/>
+                  <line x1="260" y1="86" x2="260" y2="130" stroke="#7fb4ca" stroke-width="1" stroke-dasharray="4 3"/>
+                  <line x1="300" y1="86" x2="420" y2="130" stroke="#cb7c94" stroke-width="1" stroke-dasharray="4 3"/>
+
+                  <rect x="30" y="130" width="140" height="90" rx="10" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="100" y="152" text-anchor="middle" font-size="9" fill="#b7cc85" font-weight="600">Worktree A</text>
+                  <text x="50" y="170" font-size="8" fill="#A1AABB">feature/login</text>
+                  <text x="50" y="186" font-size="8" fill="#8394A3">Agente trabajando</text>
+                  <text x="50" y="202" font-size="8" fill="#8394A3">en autenticacion</text>
+
+                  <rect x="190" y="130" width="140" height="90" rx="10" fill="#1c212c" stroke="#7fb4ca" stroke-width="1"/>
+                  <text x="260" y="152" text-anchor="middle" font-size="9" fill="#7fb4ca" font-weight="600">Worktree B</text>
+                  <text x="210" y="170" font-size="8" fill="#A1AABB">feature/api-v2</text>
+                  <text x="210" y="186" font-size="8" fill="#8394A3">Agente trabajando</text>
+                  <text x="210" y="202" font-size="8" fill="#8394A3">en nuevos endpoints</text>
+
+                  <rect x="350" y="130" width="140" height="90" rx="10" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="420" y="152" text-anchor="middle" font-size="9" fill="#cb7c94" font-weight="600">Worktree C</text>
+                  <text x="370" y="170" font-size="8" fill="#A1AABB">fix/auth-bug</text>
+                  <text x="370" y="186" font-size="8" fill="#8394A3">Agente arreglando</text>
+                  <text x="370" y="202" font-size="8" fill="#8394A3">bug critico</text>
+
+                  <rect x="80" y="260" width="360" height="50" rx="10" fill="#1c212c" stroke="#deba87" stroke-width="0.8"/>
+                  <text x="260" y="282" text-anchor="middle" font-size="9" fill="#deba87">3 agentes, 3 features, simultaneamente.</text>
+                  <text x="260" y="298" text-anchor="middle" font-size="9" fill="#8394A3">Sin conflictos de ramas. Sin context switching.</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="31" data-module="5" data-tone="orange">
+            <div class="slide-content">
+              <p class="slide-kicker">32 · Stack Moderno</p>
+              <h2>Herramientas del ecosistema</h2>
+              <p>El ecosistema actual: Claude Code (agente de terminal premium), OpenCode (alternativa open source), Cursor y Windsurf (IDEs con IA integrada), GitHub Copilot (autocompletado). Cada una tiene su lugar segun el caso de uso.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grid de 4 herramientas">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">HERRAMIENTAS DEL ECOSISTEMA</text>
+
+                  <rect x="30" y="50" width="220" height="120" rx="10" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="140" y="75" text-anchor="middle" font-size="10" fill="#cb7c94" font-weight="600">Claude Code</text>
+                  <text x="50" y="98" font-size="8" fill="#A1AABB">Agente de terminal premium</text>
+                  <text x="50" y="114" font-size="8" fill="#A1AABB">Planifica, ejecuta, verifica</text>
+                  <text x="50" y="130" font-size="8" fill="#A1AABB">MCPs + SKILLs + Engram</text>
+                  <text x="50" y="150" font-size="8" fill="#8394A3">Mejor capacidad, costo por uso</text>
+
+                  <rect x="270" y="50" width="220" height="120" rx="10" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="380" y="75" text-anchor="middle" font-size="10" fill="#b7cc85" font-weight="600">OpenCode</text>
+                  <text x="290" y="98" font-size="8" fill="#A1AABB">Open source, terminal</text>
+                  <text x="290" y="114" font-size="8" fill="#A1AABB">Usa cualquier modelo</text>
+                  <text x="290" y="130" font-size="8" fill="#A1AABB">Extensible via plugins</text>
+                  <text x="290" y="150" font-size="8" fill="#8394A3">Gratis, control total</text>
+
+                  <rect x="30" y="185" width="220" height="120" rx="10" fill="#1c212c" stroke="#7fb4ca" stroke-width="1"/>
+                  <text x="140" y="210" text-anchor="middle" font-size="10" fill="#7fb4ca" font-weight="600">Cursor / Windsurf</text>
+                  <text x="50" y="233" font-size="8" fill="#A1AABB">IDEs con IA integrada</text>
+                  <text x="50" y="249" font-size="8" fill="#A1AABB">Edicion inline + chat</text>
+                  <text x="50" y="265" font-size="8" fill="#A1AABB">Buena UX visual</text>
+                  <text x="50" y="285" font-size="8" fill="#8394A3">Suscripcion mensual</text>
+
+                  <rect x="270" y="185" width="220" height="120" rx="10" fill="#1c212c" stroke="#dfbd76" stroke-width="1"/>
+                  <text x="380" y="210" text-anchor="middle" font-size="10" fill="#dfbd76" font-weight="600">GitHub Copilot</text>
+                  <text x="290" y="233" font-size="8" fill="#A1AABB">Autocompletado en IDE</text>
+                  <text x="290" y="249" font-size="8" fill="#A1AABB">Integrado en VS Code</text>
+                  <text x="290" y="265" font-size="8" fill="#A1AABB">Rapido para snippets</text>
+                  <text x="290" y="285" font-size="8" fill="#8394A3">No es un agente completo</text>
+
+                  <text x="260" y="335" text-anchor="middle" font-size="8" fill="#deba87">Cada herramienta tiene su lugar. No son excluyentes.</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="32" data-module="5" data-tone="orange">
+            <div class="slide-content">
+              <p class="slide-kicker">33 · Stack Moderno</p>
+              <h2>Gentle AI Stack</h2>
+              <p>Un stack completo y accesible para empezar a construir con agentes. 5 capas: Base (Git + Terminal), Agente (OpenCode/Claude Code), Herramientas (MCPs + SKILLs), Memoria (Engram), Metodologia (SDD + Specs). Cada capa habilita la siguiente.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="D10: Piramide del Gentle AI Stack">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="24" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">THE GENTLE AI STACK</text>
+                  <!-- Pyramid layers bottom to top -->
+                  <polygon points="60,310 460,310 420,260 100,260" fill="#1c212c" stroke="#7fb4ca" stroke-width="1.2"/>
+                  <text x="260" y="282" text-anchor="middle" font-size="9" fill="#7fb4ca" font-weight="600">BASE: Git + Terminal</text>
+                  <text x="260" y="296" text-anchor="middle" font-size="7" fill="#8394A3">Fundamento de todo</text>
+
+                  <polygon points="100,255 420,255 385,205 135,205" fill="#1c212c" stroke="#a3b5d6" stroke-width="1.2"/>
+                  <text x="260" y="227" text-anchor="middle" font-size="9" fill="#a3b5d6" font-weight="600">AGENTE: OpenCode / Claude Code</text>
+                  <text x="260" y="241" text-anchor="middle" font-size="7" fill="#8394A3">El cerebro que ejecuta</text>
+
+                  <polygon points="135,200 385,200 355,150 165,150" fill="#1c212c" stroke="#7aa89f" stroke-width="1.2"/>
+                  <text x="260" y="172" text-anchor="middle" font-size="9" fill="#7aa89f" font-weight="600">TOOLS: MCPs + SKILLs</text>
+                  <text x="260" y="186" text-anchor="middle" font-size="7" fill="#8394A3">Las capacidades</text>
+
+                  <polygon points="165,145 355,145 325,95 195,95" fill="#1c212c" stroke="#cb7c94" stroke-width="1.2"/>
+                  <text x="260" y="117" text-anchor="middle" font-size="9" fill="#cb7c94" font-weight="600">MEMORIA: Engram</text>
+                  <text x="260" y="131" text-anchor="middle" font-size="7" fill="#8394A3">Persistencia</text>
+
+                  <polygon points="195,90 325,90 290,50 230,50" fill="#1c212c" stroke="#dfbd76" stroke-width="1.5"/>
+                  <text x="260" y="72" text-anchor="middle" font-size="9" fill="#dfbd76" font-weight="600">SDD + Specs</text>
+                  <text x="260" y="84" text-anchor="middle" font-size="7" fill="#8394A3">Metodologia</text>
+
+                  <text x="260" y="342" text-anchor="middle" font-size="9" fill="#deba87">Cada capa habilita la siguiente</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="33" data-module="5" data-tone="orange">
+            <div class="slide-content">
+              <p class="slide-kicker">34 · Stack Moderno</p>
+              <h2>Eleccion de modelo</h2>
+              <p>Para desarrollo local: Ollama + modelos open source (Llama, Mistral, DeepSeek). Privacidad total, sin costo, menor capacidad. Para produccion: Claude, GPT-4o, Gemini. Maxima capacidad, costo por token. Regla: prototipa local, despliega en cloud.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tabla eleccion de modelo 2x2">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">ELECCION DE MODELO</text>
+                  <!-- 2x2 grid -->
+                  <rect x="30" y="42" width="110" height="26" rx="4" fill="#232a36"/><text x="85" y="60" text-anchor="middle" font-size="8" fill="#8394A3"></text>
+                  <rect x="140" y="42" width="180" height="26" rx="4" fill="#232a36"/><text x="230" y="60" text-anchor="middle" font-size="8" fill="#b7cc85" font-weight="600">LOCAL (Ollama)</text>
+                  <rect x="320" y="42" width="180" height="26" rx="4" fill="#232a36"/><text x="410" y="60" text-anchor="middle" font-size="8" fill="#7fb4ca" font-weight="600">CLOUD (API)</text>
+
+                  <rect x="30" y="72" width="110" height="50" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="85" y="100" text-anchor="middle" font-size="8" fill="#dfbd76">Modelos</text>
+                  <rect x="140" y="72" width="180" height="50" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="230" y="94" text-anchor="middle" font-size="8" fill="#A1AABB">Llama, Mistral,</text><text x="230" y="108" text-anchor="middle" font-size="8" fill="#A1AABB">DeepSeek, Qwen</text>
+                  <rect x="320" y="72" width="180" height="50" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="410" y="94" text-anchor="middle" font-size="8" fill="#A1AABB">Claude, GPT-4o,</text><text x="410" y="108" text-anchor="middle" font-size="8" fill="#A1AABB">Gemini</text>
+
+                  <rect x="30" y="126" width="110" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="85" y="150" text-anchor="middle" font-size="8" fill="#dfbd76">Costo</text>
+                  <rect x="140" y="126" width="180" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="230" y="150" text-anchor="middle" font-size="8" fill="#b7cc85">Gratis</text>
+                  <rect x="320" y="126" width="180" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="410" y="150" text-anchor="middle" font-size="8" fill="#A1AABB">Por token / suscripcion</text>
+
+                  <rect x="30" y="170" width="110" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="85" y="194" text-anchor="middle" font-size="8" fill="#dfbd76">Privacidad</text>
+                  <rect x="140" y="170" width="180" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="230" y="194" text-anchor="middle" font-size="8" fill="#b7cc85">Total — datos locales</text>
+                  <rect x="320" y="170" width="180" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="410" y="194" text-anchor="middle" font-size="8" fill="#A1AABB">Datos salen a la nube</text>
+
+                  <rect x="30" y="214" width="110" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="85" y="238" text-anchor="middle" font-size="8" fill="#dfbd76">Capacidad</text>
+                  <rect x="140" y="214" width="180" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="230" y="238" text-anchor="middle" font-size="8" fill="#cb7c94">Menor (limitado por HW)</text>
+                  <rect x="320" y="214" width="180" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="410" y="238" text-anchor="middle" font-size="8" fill="#b7cc85">Maxima</text>
+
+                  <rect x="30" y="258" width="110" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="85" y="282" text-anchor="middle" font-size="8" fill="#dfbd76">Control</text>
+                  <rect x="140" y="258" width="180" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="230" y="282" text-anchor="middle" font-size="8" fill="#b7cc85">Total — fine-tuning</text>
+                  <rect x="320" y="258" width="180" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="410" y="282" text-anchor="middle" font-size="8" fill="#A1AABB">Limitado al API</text>
+
+                  <rect x="80" y="310" width="360" height="35" rx="8" fill="#1c212c" stroke="#deba87" stroke-width="1"/>
+                  <text x="260" y="332" text-anchor="middle" font-size="9" fill="#deba87">Regla: prototipa local, despliega en cloud</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="34" data-module="5" data-tone="orange">
+            <div class="slide-content">
+              <p class="slide-kicker">35 · Demo en vivo</p>
+              <h2>El flujo completo</h2>
+              <p>Demo final: (1) Escribimos una spec.md rapida. (2) Se la pasamos a un agente. (3) Vemos como genera el codigo. (4) Revisamos el resultado. El flujo completo de SDD en 3 minutos. Asi se trabaja con IA en proyectos reales.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Demo flujo SDD completo">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="20" text-anchor="middle" font-size="10" letter-spacing="2" fill="#deba87">DEMO EN VIVO — FLUJO COMPLETO</text>
+                  <rect x="30" y="35" width="460" height="295" rx="12" fill="#0d1117" stroke="#313342" stroke-width="1"/>
+                  <circle cx="54" cy="52" r="5" fill="#cb7c94" opacity="0.8"/><circle cx="70" cy="52" r="5" fill="#dfbd76" opacity="0.8"/><circle cx="86" cy="52" r="5" fill="#b7cc85" opacity="0.8"/>
+                  <line x1="30" y1="62" x2="490" y2="62" stroke="#313342" stroke-width="0.5"/>
+
+                  <text x="50" y="82" font-size="9" fill="#8394A3">// Paso 1: Escribir la spec</text>
+                  <text x="50" y="98" font-size="9" fill="#b7cc85">$ vim spec.md</text>
+                  <text x="50" y="114" font-size="8" fill="#A1AABB">  # Spec: Email validation endpoint...</text>
+
+                  <text x="50" y="140" font-size="9" fill="#8394A3">// Paso 2: Lanzar el agente con la spec</text>
+                  <text x="50" y="156" font-size="9" fill="#b7cc85">$ claude "Lee spec.md y construila"</text>
+
+                  <text x="50" y="180" font-size="9" fill="#8394A3">// Paso 3: El agente genera</text>
+                  <text x="50" y="196" font-size="9" fill="#7fb4ca">  Leyendo spec.md...</text>
+                  <text x="50" y="212" font-size="9" fill="#7fb4ca">  Creando src/schemas/email.ts</text>
+                  <text x="50" y="228" font-size="9" fill="#7fb4ca">  Creando src/routes/validate.ts</text>
+                  <text x="50" y="244" font-size="9" fill="#7fb4ca">  Creando tests/validate.test.ts</text>
+                  <text x="50" y="260" font-size="9" fill="#b7cc85">  Tests: 4/4 passing</text>
+
+                  <text x="50" y="284" font-size="9" fill="#8394A3">// Paso 4: Revisar</text>
+                  <text x="50" y="300" font-size="9" fill="#dfbd76">  git diff → Review → Merge</text>
+
+                  <text x="50" y="322" font-size="8" fill="#deba87">// ver demos/03-flujo-sdd.md para instrucciones completas</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <!-- ═══ MODULO 6: CIERRE (slides 35-39) ═══ -->
+
+          <article class="slide" data-index="35" data-module="6" data-tone="cyan">
+            <div class="slide-content">
+              <p class="slide-kicker">36 · Cierre</p>
+              <h2>Lo que vimos hoy — 5 ideas clave</h2>
+              <p>(1) Un LLM predice tokens, no piensa. (2) Un prompt profesional es codigo con estructura. (3) RAG elimina alucinaciones con datos reales. (4) Un agente = LLM + herramientas + memoria + planificacion. (5) El futuro es dirigir IA, no solo escribir codigo.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa mental + 5 ideas clave">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="24" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">5 IDEAS CLAVE</text>
+
+                  <rect x="40" y="40" width="440" height="48" rx="8" fill="#1c212c" stroke="#dfbd76" stroke-width="1"/>
+                  <text x="70" y="62" font-size="12" fill="#dfbd76" font-weight="700">1</text>
+                  <text x="95" y="62" font-size="10" fill="#A1AABB">Un LLM predice tokens. No piensa.</text>
+                  <text x="95" y="78" font-size="8" fill="#8394A3">Pero su escala produce resultados extraordinarios.</text>
+
+                  <rect x="40" y="96" width="440" height="48" rx="8" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <text x="70" y="118" font-size="12" fill="#b7cc85" font-weight="700">2</text>
+                  <text x="95" y="118" font-size="10" fill="#A1AABB">Un prompt profesional es codigo.</text>
+                  <text x="95" y="134" font-size="8" fill="#8394A3">Tiene estructura, tipos y contrato de salida.</text>
+
+                  <rect x="40" y="152" width="440" height="48" rx="8" fill="#1c212c" stroke="#a3b5d6" stroke-width="1"/>
+                  <text x="70" y="174" font-size="12" fill="#a3b5d6" font-weight="700">3</text>
+                  <text x="95" y="174" font-size="10" fill="#A1AABB">RAG elimina alucinaciones.</text>
+                  <text x="95" y="190" font-size="8" fill="#8394A3">Inyecta datos reales al momento de la consulta.</text>
+
+                  <rect x="40" y="208" width="440" height="48" rx="8" fill="#1c212c" stroke="#cb7c94" stroke-width="1"/>
+                  <text x="70" y="230" font-size="12" fill="#cb7c94" font-weight="700">4</text>
+                  <text x="95" y="230" font-size="10" fill="#A1AABB">Un agente = LLM + tools + memoria.</text>
+                  <text x="95" y="246" font-size="8" fill="#8394A3">No solo responde, EJECUTA acciones autonomamente.</text>
+
+                  <rect x="40" y="264" width="440" height="48" rx="8" fill="#1c212c" stroke="#deba87" stroke-width="1"/>
+                  <text x="70" y="286" font-size="12" fill="#deba87" font-weight="700">5</text>
+                  <text x="95" y="286" font-size="10" fill="#A1AABB">El futuro es dirigir IA, no solo escribir.</text>
+                  <text x="95" y="302" font-size="8" fill="#8394A3">Spec → Agente → Codigo → Review → Iteracion.</text>
+
+                  <text x="260" y="340" text-anchor="middle" font-size="9" fill="#7aa89f">Estas 5 ideas son la base de todo el curso.</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="36" data-module="6" data-tone="cyan">
+            <div class="slide-content">
+              <p class="slide-kicker">37 · Cierre</p>
+              <h2>Antes y despues</h2>
+              <p>Antes de esta clase usabas ChatGPT para preguntas sueltas. Ahora entendes como funciona por dentro, como hablarle profesionalmente, como darle informacion, y como convertirlo en un agente que trabaja para vos.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tabla antes vs despues">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="28" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">ANTES Y DESPUES</text>
+                  <rect x="30" y="42" width="230" height="28" rx="4" fill="#232a36"/><text x="145" y="60" text-anchor="middle" font-size="9" fill="#cb7c94" font-weight="600">ANTES DE ESTA CLASE</text>
+                  <rect x="260" y="42" width="230" height="28" rx="4" fill="#232a36"/><text x="375" y="60" text-anchor="middle" font-size="9" fill="#b7cc85" font-weight="600">DESPUES DE ESTA CLASE</text>
+
+                  <rect x="30" y="74" width="230" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="45" y="98" font-size="8" fill="#A1AABB">Usaba ChatGPT para preguntas sueltas</text>
+                  <rect x="260" y="74" width="230" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="275" y="98" font-size="8" fill="#A1AABB">Escribo system prompts y specs</text>
+
+                  <rect x="30" y="118" width="230" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="45" y="142" font-size="8" fill="#A1AABB">Prompts tipo "haceme una web"</text>
+                  <rect x="260" y="118" width="230" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="275" y="142" font-size="8" fill="#A1AABB">Prompts con 5 capas estructuradas</text>
+
+                  <rect x="30" y="162" width="230" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="45" y="186" font-size="8" fill="#A1AABB">No sabia que hacer con alucinaciones</text>
+                  <rect x="260" y="162" width="230" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="275" y="186" font-size="8" fill="#A1AABB">Conozco RAG para datos reales</text>
+
+                  <rect x="30" y="206" width="230" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="45" y="230" font-size="8" fill="#A1AABB">IA = autocompletado glorificado</text>
+                  <rect x="260" y="206" width="230" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="275" y="230" font-size="8" fill="#A1AABB">Se armar agentes con MCPs y SKILLs</text>
+
+                  <rect x="30" y="250" width="230" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="45" y="274" font-size="8" fill="#A1AABB">Escribia codigo linea por linea</text>
+                  <rect x="260" y="250" width="230" height="40" rx="4" fill="#1c212c" stroke="#313342" stroke-width="0.5"/><text x="275" y="274" font-size="8" fill="#A1AABB">Dirijo agentes con specs y SDD</text>
+
+                  <text x="260" y="320" text-anchor="middle" font-size="10" fill="#7aa89f" font-weight="600">De usuario casual a profesional de IA</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="37" data-module="6" data-tone="cyan">
+            <div class="slide-content">
+              <p class="slide-kicker">38 · Cierre</p>
+              <h2>Tarea para la proxima clase</h2>
+              <p>Tres cosas para la proxima: (1) Instalar Ollama y correr un modelo local — lleva 5 minutos. (2) Escribir un system prompt para un asistente de codigo personalizado a tu stack. (3) Leer sobre MCPs en modelcontextprotocol.io. En la proxima clase construimos tu primer agente.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Checklist de 3 tareas">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="30" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">TAREA PARA LA PROXIMA CLASE</text>
+
+                  <rect x="50" y="55" width="420" height="75" rx="10" fill="#1c212c" stroke="#b7cc85" stroke-width="1"/>
+                  <rect x="70" y="72" width="18" height="18" rx="4" fill="none" stroke="#b7cc85" stroke-width="1.2"/>
+                  <text x="100" y="82" font-size="11" fill="#b7cc85" font-weight="600">1. Instalar Ollama</text>
+                  <text x="100" y="100" font-size="9" fill="#A1AABB">Descargar de ollama.com y correr un modelo local.</text>
+                  <text x="100" y="116" font-size="8" fill="#8394A3">ollama run llama3.2 — lleva 5 minutos.</text>
+
+                  <rect x="50" y="145" width="420" height="75" rx="10" fill="#1c212c" stroke="#7fb4ca" stroke-width="1"/>
+                  <rect x="70" y="162" width="18" height="18" rx="4" fill="none" stroke="#7fb4ca" stroke-width="1.2"/>
+                  <text x="100" y="172" font-size="11" fill="#7fb4ca" font-weight="600">2. Escribir un system prompt</text>
+                  <text x="100" y="190" font-size="9" fill="#A1AABB">Crear un asistente de codigo personalizado a tu stack.</text>
+                  <text x="100" y="206" font-size="8" fill="#8394A3">Usar las 5 capas que vimos: rol, contexto, instruccion, formato, ejemplos.</text>
+
+                  <rect x="50" y="235" width="420" height="75" rx="10" fill="#1c212c" stroke="#dfbd76" stroke-width="1"/>
+                  <rect x="70" y="252" width="18" height="18" rx="4" fill="none" stroke="#dfbd76" stroke-width="1.2"/>
+                  <text x="100" y="262" font-size="11" fill="#dfbd76" font-weight="600">3. Leer sobre MCPs</text>
+                  <text x="100" y="280" font-size="9" fill="#A1AABB">Visitar modelcontextprotocol.io — solo la pagina principal.</text>
+                  <text x="100" y="296" font-size="8" fill="#8394A3">Entender que es y como se conectan herramientas.</text>
+
+                  <text x="260" y="340" text-anchor="middle" font-size="9" fill="#7aa89f">En la Clase 2 construimos tu primer agente funcional.</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="38" data-module="6" data-tone="cyan">
+            <div class="slide-content">
+              <p class="slide-kicker">39 · Cierre</p>
+              <h2>Recursos y proxima clase</h2>
+              <p>Recursos: platform.openai.com/tokenizer, ollama.com, docs.anthropic.com, modelcontextprotocol.io. Proxima clase: "Construyendo tu primer agente" — instalacion completa del stack, primer agente funcional, MCPs en practica.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Recursos y preview clase 2">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="24" text-anchor="middle" font-size="10" letter-spacing="2" fill="#8394A3">RECURSOS</text>
+                  <rect x="40" y="40" width="440" height="150" rx="10" fill="#1c212c" stroke="#7aa89f" stroke-width="1"/>
+                  <text x="60" y="66" font-size="9" fill="#7fb4ca">platform.openai.com/tokenizer</text><text x="310" y="66" font-size="8" fill="#8394A3">— Visualiza tokenizacion</text>
+                  <text x="60" y="88" font-size="9" fill="#7fb4ca">ollama.com</text><text x="310" y="88" font-size="8" fill="#8394A3">— Modelos locales</text>
+                  <text x="60" y="110" font-size="9" fill="#7fb4ca">docs.anthropic.com</text><text x="310" y="110" font-size="8" fill="#8394A3">— Docs de Claude</text>
+                  <text x="60" y="132" font-size="9" fill="#7fb4ca">modelcontextprotocol.io</text><text x="310" y="132" font-size="8" fill="#8394A3">— Estandar MCP</text>
+                  <text x="60" y="154" font-size="9" fill="#7fb4ca">github.com/anthropics/claude-code</text><text x="310" y="154" font-size="8" fill="#8394A3">— Claude Code</text>
+                  <text x="60" y="176" font-size="9" fill="#7fb4ca">opencode.ai</text><text x="310" y="176" font-size="8" fill="#8394A3">— Alternativa open source</text>
+
+                  <rect x="40" y="210" width="440" height="100" rx="10" fill="#1c212c" stroke="#dfbd76" stroke-width="1.5"/>
+                  <text x="260" y="235" text-anchor="middle" font-size="10" letter-spacing="2" fill="#dfbd76">PREVIEW — CLASE 2</text>
+                  <text x="260" y="260" text-anchor="middle" font-size="12" fill="#A1AABB" font-weight="500">"Construyendo tu primer agente"</text>
+                  <text x="260" y="282" text-anchor="middle" font-size="9" fill="#8394A3">Instalacion completa del stack + primer agente funcional</text>
+                  <text x="260" y="298" text-anchor="middle" font-size="9" fill="#8394A3">MCPs en practica + worktrees + SDD en vivo</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+          <article class="slide" data-index="39" data-module="6" data-tone="cyan">
+            <div class="slide-content">
+              <p class="slide-kicker">40 · Cierre</p>
+              <h2>¿Preguntas?</h2>
+              <p>La mayoria de los programadores usan IA como una calculadora sofisticada. Pero lo que vimos hoy es que la IA puede ser un COMPAÑERO DE EQUIPO. Uno que lee specs, escribe codigo, corre tests y aprende de sus errores. La pregunta no es SI van a trabajar con agentes. La pregunta es CUANDO empiezan.</p>
+            </div>
+            <figure class="slide-figure">
+              <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cierre y contacto">
+                <g font-family="Space Grotesk,sans-serif">
+                  <text x="260" y="100" text-anchor="middle" font-size="48" font-weight="700" fill="#7aa89f" font-family="Source Serif 4,serif" opacity="0.8">¿Preguntas?</text>
+                  <text x="260" y="160" text-anchor="middle" font-size="11" fill="#A1AABB">Curso de Inteligencia Artificial para Programadores</text>
+                  <text x="260" y="180" text-anchor="middle" font-size="10" fill="#8394A3">Clase 1 — De LLMs a Agentes</text>
+
+                  <rect x="120" y="220" width="280" height="70" rx="12" fill="#1c212c" stroke="#7aa89f" stroke-width="1"/>
+                  <text x="260" y="248" text-anchor="middle" font-size="10" fill="#7aa89f" font-weight="500">Mi sugerencia: empeza hoy.</text>
+                  <text x="260" y="270" text-anchor="middle" font-size="9" fill="#8394A3">Instala Ollama. Escribi un prompt. Experimenta.</text>
+
+                  <text x="260" y="330" text-anchor="middle" font-size="9" fill="#313342">Nos vemos en la Clase 2</text>
+                </g>
+              </svg>
+            </figure>
+          </article>
+
+        </main>
+      </div>
+
+      <div class="deck-controls">
+        <button class="ghost" id="prev" aria-label="Anterior">&larr; Prev</button>
+        <button class="solid" id="next" aria-label="Siguiente">Next &rarr;</button>
+      </div>
+    </div>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
